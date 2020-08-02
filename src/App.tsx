@@ -3,6 +3,7 @@ function App() {
   
   return (
     <>
+    <p>hello people</p>
     </>
   );
 }
