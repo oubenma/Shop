@@ -1,11 +1,12 @@
-import React from 'react';
-function App() {
-  
+import React from "react";
+import ContentHome from "./ContentPage/ContentHome";
+
+
+const App = () => {
   return (
-    <>
-    <p>hello people</p>
-    </>
+          <ContentHome/>
   );
-}
+};
 
 export default App;
+
