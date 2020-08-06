@@ -1,9 +1,12 @@
 import React from 'react';
+import Hearder from './AppBar';
+
 function App() {
   
   return (
     <>
-    <p>hello people</p>
+    <Hearder/>
+  
     </>
   );
 }
