@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Grid, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import coffeMakerList from './constants';
@@ -7,6 +7,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Settings } from 'react-slick';
+import { DataContext } from '../context/dataContext';
 
 const useStyles = makeStyles({
   root: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles({
 
 export default function PopularThisWeek() {
   const classes = useStyles();
+  const { popularThisWeekProducts } = useContext(DataContext);
 
   var SliderSettings: Settings = {
     dots: true,
@@ -52,19 +54,18 @@ export default function PopularThisWeek() {
     //TODO: improve design
     //TODO: we can add responsive to the slider by visting this link http://kenwheeler.github.io/slick/
   };
-
   return (
     <div className={classes.root}>
       <h2 className={classes.title}>Popular this week</h2>
 
       <Slider {...SliderSettings}>
-        {coffeMakerList.map((product) => {
+        {popularThisWeekProducts.map((product) => {
           return (
             <div style={{ margin: 15 }}>
               <ProductCard
-                OldPrice={product.OldPrice}
+                OldPrice={product.oldPrice}
                 title={product.title}
-                SalePrice={product.SalePrice}
+                SalePrice={product.salePrice}
                 value={product.value}
                 imageUrl={product.imageUrl}
               />
