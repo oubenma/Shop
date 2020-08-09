@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { CardMedia } from '@material-ui/core';
 const useStyles = makeStyles({
   root: {
-    backgroundColor: '#f7f7f7',
+    backgroundColor: 'transparent',
     maxWidth: '250vw',
     Height: '200vh',
     cursor: ' pointer',
