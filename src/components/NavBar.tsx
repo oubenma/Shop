@@ -8,42 +8,86 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PersonIcon from '@material-ui/icons/Person';
-import { Button, Link } from '@material-ui/core';
+import { Button, Link,Grid } from '@material-ui/core';
 import logo from '../assets/logo.png';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    grow: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(3),
-    },
-    button: {
-      fontFamily: 'sans-serif',
-      fontWeight: 700,
+ 
+menu:{      
+fontFamily: 'DIN Next,sans-serif',
+      fontWeight: 400,
       fontStyle: 'normal',
-      textTransform: 'initial',
-      letterSpacing: '0.5px',
-      display: 'inline-block',
-      textDecoration: 'none',
-      padding: '8px',
-      whiteSpace: 'nowrap',
+      fontSize: '17px',
+      lineHeight: 1.5,
       color: '#202020',
+      webkitFontSmoothing: 'antialiased',
+      textRendering: 'optimizeLegibility',
       boxSizing: 'border-box',
-      cursor: 'pointer',
-    },
-    title: {
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
+      order: 3,
+      whiteSpace: 'nowrap'},
+      ul:{
+        fontFamily: 'DIN Next,sans-serif',
+      fontWeight: 400,
+      fontStyle: 'normal',
+      fontSize: '17px',
+      lineHeight: 1.5,
+      color: '#202020',
+      webkitFontSmoothing: 'antialiased',
+      textRendering: 'optimizeLegibility',
+      boxSizing: 'border-box',
+      padding: 0,
+      margin: '0 0 17px 17px',
+      alignItems: 'center',
+      marginBottom: 0,
+       marginRight: '17px'
       },
-    },
+      li:{
+        fontFamily: 'DIN Next,sans-serif',
+        fontWeight: 400,
+        fontStyle: 'normal',
+        fontSize: '17px',
+        lineHeight: 1.5,
+        color: '#202020',
+        webkitFontSmoothing: 'antialiased',
+        textRendering: 'optimizeLegibility',
+        boxSizing: 'border-box',
+       position: 'relative',
+      display: 'inline-block',
+      margin: 0,
+      lineHeigh:1,
+      whiteSpace: 'normal',
+      marginBottom:' 0px'
+      },
+      a:{
+        fontSize: '17px',
+webkitFontSmoothing: 'antialiased',
+textRendering: 'optimizeLegibility',
+lineHeight: 1,
+boxSizing: 'border-box',
+transition: 'all 0.3s ease',
+outline: 'none !important',
+background: 'transparent',
+fontFamily: 'DIN Next,sans-serif',
+fontWeight: 700,
+fontStyle: 'normal',
+textTransform: 'initial',
+letterSpacing: '0.5px',
+display: 'inline-block',
+textDecoration: 'none',
+padding: '8px',
+whiteSpace: 'nowrap',
+color: '#202020',
+      },
     header: {
-      backgroundColor: 'transparent',
+      backgroundColor: '#fff',
       color: 'black',
       boxShadow: '0px 0px 0px 0px',
       top: '0px',
+      height: '80px',
+      margin: '0 auto',
+
+        
     },
     topHeader: {
       backgroundColor: 'black',
@@ -62,89 +106,46 @@ const useStyles = makeStyles((theme: Theme) =>
       lineHeight: '1.2',
       marginButtom: '0px',
     },
-
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-        width: '20ch',
-      },
+   
+    flex1:{
+      flexGrow:1,
     },
-    logo: {
-      width: 'auto',
+    flex2:{
+      flexGrow:3,
     },
-    sectionDesktop: {
-      display: 'none',
-      [theme.breakpoints.up('md')]: {
-        display: 'flex',
-      },
-    },
-    sectionMobile: {
-      display: 'flex',
-      [theme.breakpoints.up('md')]: {
-        display: 'none',
-      },
-    },
+    
+    
   })
 );
 
 function NavBar() {
   const classes = useStyles();
-  // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  // const [
-  //   mobileMoreAnchorEl,
-  //   setMobileMoreAnchorEl,
-  // ] = React.useState<null | HTMLElement>(null);
-
-  // const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-  // setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleMobileMenuClose = () => {
-  //   setMobileMoreAnchorEl(null);
-  // };
-
-  // const menuId = 'primary-search-account-menu';
-  // const renderMenu = <></>;
-
-  // const mobileMenuId = 'primary-search-account-menu-mobile';
-  // const renderMobileMenu = <></>;
-
   return (
     <>
       <div className={classes.topHeader}>
         <span> Great Products, Free Shipping & Easy Returns!</span>
       </div>
-
       <AppBar position='sticky' className={classes.header}>
+        <div >
+        <div className={classes.header}>
         <Toolbar>
-          {/* <Grid container spacing={3}>
-            <Grid item md={3}>
-              <div>logo</div>
-            </Grid>
-            <Grid item md={6}>
-              <div>links</div>
-            </Grid>
-            <Grid item md={3}>
-              <div>icons</div>
-            </Grid>
-          </Grid> */}
-          <div className={classes.sectionDesktop}>
-            <div className={classes.menuButton} />
-
-            <img src={logo} alt='logo' height='35' />
-            {/* TODO : create links instead of buttons and create ul menu with li, check hygo site */}
-            {/* <div className={classes.grow} /> */}
-            <Button className={classes.button}>Home</Button>
-            <Button className={classes.button}>Shop</Button>
-            <Button className={classes.button}>Track Order</Button>
-            <Button className={classes.button}>Contact</Button>
-            {/* <div className={classes.grow} /> */}
-
-            <IconButton aria-label='show 2 new notifications' color='inherit'>
+          <div  className={classes.flex2}>
+           < a href ="/">
+          <img src={logo} alt='logo' height='39' width='100' />
+            </a>
+            </div>
+             <div className={classes.flex1}>
+             <ul className={classes.ul}>
+               <li className={classes.li}><a className={classes.a}  href="/" >Home</a></li>
+               <li className={classes.li}><a className={classes.a}  href="/" >Shop</a></li>
+               <li className={classes.li}><a className={classes.a} href="/" >Track Order</a></li>
+               <li className={classes.li}><a className={classes.a} href="/" >Contact</a></li>
+             </ul>
+             </div>
+             <div className={classes.flex1}/>
+           <div >
+             
+            <IconButton aria-label='user login icon' color='inherit'>
               <PersonIcon />
             </IconButton>
             <IconButton aria-label='sherch icon' color='inherit'>
@@ -159,51 +160,13 @@ function NavBar() {
               <Badge badgeContent={2} color='secondary'>
                 <ShoppingCartIcon />
               </Badge>
-            </IconButton>
-          </div>
-
-          {/* <div className={classes.sectionMobile}>
-            <IconButton
-              edge='start'
-              className={classes.menuButton}
-              color='inherit'
-              aria-label='open drawer'
-            >
-              <MenuIcon />
-            </IconButton>
-            <IconButton
-              aria-label='show more'
-              // aria-controls={mobileMenuId}
-              aria-haspopup='true'
-              color='inherit'
-            ></IconButton>
-            <IconButton aria-label='show 2 new notifications' color='inherit'>
-              <PersonIcon />
-              <div className={classes.grow} />
-
-              <Button>
-                <img src={logo} alt='logo' height='35' />
-              </Button>
-            </IconButton>
-            <IconButton aria-label='sherch icon' color='inherit'>
-              <SearchIcon />
-            </IconButton>
-            <IconButton
-              edge='end'
-              aria-label='account of current user'
-              // aria-controls={menuId}
-              aria-haspopup='true'
-              color='inherit'
-            >
-              <Badge badgeContent={2} color='secondary'>
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
-          </div>
-         */}
+          </IconButton> 
+           </div>
+           
         </Toolbar>
+        </div>
+        </div>
       </AppBar>
-      {/* {renderMobileMenu} */}
     </>
   );
 }
