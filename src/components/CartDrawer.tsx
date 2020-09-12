@@ -1,31 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import SearchIcon from '@material-ui/icons/Search';
+
+import {
+  Drawer,
+  Button,
+  CardContent,
+  Typography,
+  createStyles,
+} from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
+import CardMedia from '@material-ui/core/CardMedia';
+import Link from '@material-ui/core/Link';
+import makeStyles from '@material-ui/styles/makeStyles';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PersonIcon from '@material-ui/icons/Person';
-import logo from '../assets/logo.png';
-import CartDrawer from './CartDrawer';
 import { CartItemType } from '../types/types';
 
+// TODO : remove uncessarly css classes
 const useStyles = makeStyles(() =>
   createStyles({
-    menu: {
-      fontFamily: 'DIN Next,sans-serif',
-      fontWeight: 400,
-      fontStyle: 'normal',
-      fontSize: '17px',
-      lineHeight: 1.5,
-      color: '#202020',
-      webkitFontSmoothing: 'antialiased',
-      textRendering: 'optimizeLegibility',
-      boxSizing: 'border-box',
-      order: 3,
-      whiteSpace: 'nowrap',
-    },
     ul: {
       fontFamily: 'DIN Next,sans-serif',
       fontWeight: 400,
@@ -303,101 +295,85 @@ const useStyles = makeStyles(() =>
     },
   })
 );
-
-function NavBar() {
+interface PropsType {
+  open: boolean;
+  handleDrawerClose: () => void;
+  emptyCart: boolean;
+  cartItmes: CartItemType[];
+}
+function CartDrawer({
+  open,
+  handleDrawerClose,
+  emptyCart,
+  cartItmes,
+}: PropsType) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [cartItmes, setCartItmes] = useState<CartItemType[]>([]);
-  const emptyCart = false;
-
-  useEffect(() => {
-    setCartItmes([
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 19.22,
-        quntity: 2,
-      },
-    ]);
-  }, []);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <>
-      <div className={classes.topHeader}>
-        <span> Great Products, Free Shipping & Easy Returns!</span>
-      </div>
-      <AppBar position='sticky' className={classes.header}>
-        <div style={{ padding: '0 30px 0 30px' }}>
-          <div className={classes.header}>
-            <Toolbar>
-              <div className={classes.flex2}>
-                <a href='/'>
-                  <img src={logo} alt='logo' height='39' width='100' />
-                </a>
-              </div>
-              <div className={classes.flex1}>
-                <ul className={classes.ul}>
-                  <li className={classes.li}>
-                    <a className={classes.a} href='/'>
-                      Home
-                    </a>
-                  </li>
-                  <li className={classes.li}>
-                    <a className={classes.a} href='/'>
-                      Shop
-                    </a>
-                  </li>
-                  <li className={classes.li}>
-                    <a className={classes.a} href='/'>
-                      Track Order
-                    </a>
-                  </li>
-                  <li className={classes.li}>
-                    <a className={classes.a} href='/'>
-                      Contact
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div className={classes.flex1} />
-              <div>
-                <IconButton aria-label='user login icon' color='inherit'>
-                  <PersonIcon />
-                </IconButton>
-                <IconButton aria-label='sherch icon' color='inherit'>
-                  <SearchIcon />
-                </IconButton>
-                <IconButton
-                  edge='end'
-                  aria-label='sopping cart'
-                  aria-haspopup='true'
-                  color='inherit'
-                  onClick={handleDrawerOpen}
-                >
-                  <Badge badgeContent={2} color='secondary'>
-                    <ShoppingCartIcon />
-                  </Badge>
-                </IconButton>
-              </div>
-            </Toolbar>
+    <div className={classes.drawer_header}>
+      <Drawer anchor='right' open={open} onClose={handleDrawerClose}>
+        <div className={classes.title2}>
+          <div className={classes.title3}>
+            <a className={classes.drawer_title} href='/'>
+              <span className={classes.drawer_title}>
+                <ShoppingCartIcon fontSize='large' />
+              </span>
+              Your Cart{' '}
+            </a>
           </div>
+          <IconButton onClick={handleDrawerClose}>
+            <CloseIcon className={classes.close_button} fontSize='small' />
+          </IconButton>
         </div>
-      </AppBar>
-      <CartDrawer
-        open={open}
-        emptyCart={emptyCart}
-        handleDrawerClose={handleDrawerClose}
-        cartItmes={cartItmes}
-      />
-    </>
+        {emptyCart ? (
+          <div className={classes.inner_container}>
+            <div className={classes.inner_container1}>
+              <p className={classes.inner_container2}>
+                {' '}
+                Your cart is currently empty.{' '}
+              </p>
+
+              <div className={classes.boxButton}>
+                <Button className={classes.button}>Continue browzing</Button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className={classes.inner_container21}>
+            <div className={classes.inner_container22}>
+              <div className={classes.inner_container23}>
+                <CardMedia
+                  className={classes.cover}
+                  image='https://images-na.ssl-images-amazon.com/images/I/61-KUPluVYL._AC_SL1500_.jpg'
+                  title='Live from space album cover'
+                />
+
+                <div className={classes.details}>
+                  <CardContent className={classes.contenu}>
+                    <Link href='#' className={classes.link}>
+                      {' '}
+                      Rollable Keyboard
+                    </Link>
+                    <Typography variant='subtitle1' color='textSecondary'>
+                      Red
+                    </Typography>
+                  </CardContent>
+                  <div className={classes.controls}>
+                    <Button size='small' className={classes.button2}>
+                      -
+                    </Button>
+                    <span>1</span>
+                    <Button className={classes.button2}>+</Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className={classes.inner_container24}></div>
+          </div>
+        )}
+      </Drawer>
+    </div>
   );
 }
-export default NavBar;
+
+export default CartDrawer;
