@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,8 +10,14 @@ import PersonIcon from '@material-ui/icons/Person';
 import logo from '../assets/logo.png';
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import { Drawer,Button } from '@material-ui/core';
+import { Drawer,Button, CardContent, Typography } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import Cart from './Cart';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import Link from '@material-ui/core/Link';
+
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -79,6 +85,7 @@ const useStyles = makeStyles(() =>
       padding: '8px',
       whiteSpace: 'nowrap',
       color: '#202020',
+      
     },
     header: {
       backgroundColor: '#fff',
@@ -114,20 +121,20 @@ const useStyles = makeStyles(() =>
     },
   
   drawer_header:{
-    width:'400px',
-    height:'578px',
- 
+    width:'450px',
+
   },
   title2:{
-    padding:'0px 50px 0px 20px',
-    width:'370px',
+   paddingLeft:'16px',
+   paddingRight:'16px',
+    width:'418px',
     height:'80px',
     display:'flex',
     alignItems:'center'
     
   },
   title3:{
-    width:'350px',
+    width:'370px',
     
   },
   drawer_title:{
@@ -147,9 +154,9 @@ const useStyles = makeStyles(() =>
     transition: 'all 0.3s ease',
   },
   inner_container:{
-    width:'410px',
-    height:'438px',
-    padding:'30px',
+    width:'418px',
+    height:'518px',
+    padding:'30px 16px 30px 16px',
     display: 'flex',
     flexDirection:'column',
     justifyContent: 'center',
@@ -204,20 +211,152 @@ const useStyles = makeStyles(() =>
   },
   close_button:{
     color: '#202020',  
-  }
+  },
+  inner_container21:{
+    width:'450px',
+    height:'518px',
+    display: 'flex',
+    
+    backgroundColor:'#f7f7f7'
+  },
+  inner_container22
+
+  :{
+    width:'418px',
+    height:'224px',
+    padding:'16px', 
+    marginTop:'30px',
+    display: 'flex',
+  backgroundColor:'#f7f7f7',
+ 
+  },
+  inner_container23:{
+    width:'418px',
+    height:'113px',
+    paddingBottom:'16px',
+    marginBottom:'16px',
+        borderBottom:'1px solid #f2f2f2',
+  backgroundColor:'#f7f7f7',
+  display:'flex'
+ 
+  
+  },
+  inner_container24
+  :{
+    width:'418px',
+    height:'163px',
+    padding:'16px',
+    minHeight:'130px',
+    position:'absolute',
+    display: 'flex',
+    flexDirection:'column',
+  justifyContent: 'center',
+  alignItems: 'center' ,
+  backgroundColor:'#fff',
+  bottom:0
+  },
+  root:{display:'flex'},
+  details: {
+    height:'44px',
+    display: 'flex',
+    flexDirection:'column',
+  },
+  cover: {
+    width: 113,
+     
+  },
+  content: {
+    flex: '1 0 auto',
+  },
+  
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top:0
+    // paddingLeft: theme.spacing(1),
+    // paddingBottom: theme.spacing(1),
+  },
+  playIcon: {
+    height: 38,
+    width: 38,
+  },
+  link:{
+    fontFamily: 'DIN Next,sans-serif',
+    fontWeight: 700,
+    fontStyle: 'normal',
+    textTransform: 'initial',
+    letterSpacing: '0px',
+    color:'#202020',
+    underline:'none',
+    fontSize: '17px',
+   
+  },
+  contenu:{
+    height:'40px',
+    paddingTop:'16px',
+    paddingBottom:'0px',
+    paddingLeft:'16px'
+
+  },
+  button2: {
+    backgroundColor: '#f2f2f2',
+    borderColor: '#f2f2f2',
+    color: '#202020',
+    transition: 'all 0.3s ease',
+    fontFamily: '"DIN Next",sans-serif',
+    fontWeight: 700,
+    fontStyle: 'normal',
+    textTransform: 'initial',
+    letterSpacing: '0.5px',
+    border: '1px solid #f2f2f2',
+    borderRadius: '3px',
+    lineHeight: 1.2,
+    display: 'inherit',
+    textAlign: 'center',
+    fontSize: '29px',
+    marginTop: '5px',
+    marginLet: '0px',
+    '&:hover': {
+      backgroundColor: '#f2f2f2',
+      opacity: 0.6,
+    },
+  },
   })
 );
 
+
 function NavBar() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
+const [cart,setCart]=React.useState(false);
+const emptyCart=false;
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+const handleDrawerOpen1 = () => {
+  setOpen1(true);
+};
+const handleDrawerOpen2 = () => {
+  setOpen2(true);
+};
+  const handleDrawerClose1 = () => {
+    setOpen1(false);
   };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleDrawerClose2 = () => {
+    setOpen2(false);
+  };
+  // const handleDrawer1=()=>{
+  //   setOpen(true);
+  // }
+  const handleDrawerOpen=(cart:boolean)=>(
+    event: React.KeyboardEvent | React.MouseEvent,
+  ) => {
+    if(cart==false){
+       handleDrawerOpen1();}
+    else{
+     handleDrawerOpen2();
+    }
+    
   };
   return (
     <>
@@ -270,7 +409,7 @@ function NavBar() {
                   aria-label='sopping cart'
                   aria-haspopup='true'
                   color='inherit'
-                  onClick={handleDrawerOpen}
+                  onClick={handleDrawerOpen(false)}
                 >
                   <Badge badgeContent={2} color='secondary'>
                     <ShoppingCartIcon />
@@ -281,9 +420,10 @@ function NavBar() {
           </div>
         </div>
       </AppBar>
-     <div> 
-      <Drawer   variant="persistent" anchor="right" open={open}>
-        <div className={classes.drawer_header}>
+      
+      <div className={classes.drawer_header}>
+      <Drawer   anchor="right" open={open1} onClose={handleDrawerClose1} >
+        
         <div className={classes.title2} >
           <div className={classes.title3}>
         <a className={classes.drawer_title}  href='/'>
@@ -291,12 +431,10 @@ function NavBar() {
          <span className={classes.drawer_title} ><ShoppingCartIcon fontSize='large'/>
            </span>
            Your Cart      </a></div>
-          <IconButton  onClick={handleDrawerClose}>
+          <IconButton  onClick={handleDrawerClose1} >
           <CloseIcon className={classes.close_button} fontSize='small'/> 
           </IconButton>
           </div>
-          
-        <Divider />
         <div className={classes.inner_container} >
           <div className={classes.inner_container1}>
           <p className={classes.inner_container2}> Your cart is currently empty. </p>
@@ -306,9 +444,59 @@ function NavBar() {
       </div>
       </div>
         </div>
-        </div>  
+          
       </Drawer>
-      </div> 
+      </div>
+      <div className={classes.drawer_header}>
+      <Drawer   anchor="right" open={open2}  onClose={handleDrawerClose2}> 
+        <div className={classes.title2} >
+          <div className={classes.title3}>
+        <a className={classes.drawer_title}  href='/'>
+          
+         <span className={classes.drawer_title} ><ShoppingCartIcon fontSize='large'/>
+           </span>
+           Your Cart      </a></div>
+          <IconButton   onClick={handleDrawerClose2}>
+          <CloseIcon className={classes.close_button}  fontSize='small'/> 
+          </IconButton>
+          </div> 
+        <div className={classes.inner_container21} >
+          <div className={classes.inner_container22}>
+            
+          <div className={classes.inner_container23}>
+      
+      <CardMedia 
+       className={classes.cover}
+     image="https://images-na.ssl-images-amazon.com/images/I/61-KUPluVYL._AC_SL1500_.jpg"
+      title="Live from space album cover"
+   />
+   
+      <div className={classes.details} >
+        <CardContent className={classes.contenu} >
+        <Link href='#' className={classes.link}> Rollable Keyboard</Link>
+          <Typography variant="subtitle1" color="textSecondary">
+            Red
+          </Typography>
+        </CardContent>
+        <div className={classes.controls}>
+        <Button size='small'className={classes.button2} >-</Button>
+         <span>1</span>
+          <Button  className={classes.button2} >+</Button> 
+          </div>
+                  </div>
+        </div>
+    
+        </div>
+         
+         <div className={classes.inner_container24}>
+         
+           </div>
+      </div>   
+      </Drawer>
+     
+      </div>
+      
+      
     </>
   );
 }
