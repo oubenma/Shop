@@ -1,14 +1,14 @@
-import React from 'react';
+import React,{useState} from 'react';
+
 import IconButton from '@material-ui/core/IconButton';
+import LockIcon from '@material-ui/icons/Lock';
 
 import {
   Drawer,
   Button,
   CardContent,
   Typography,
-  createStyles,
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+  createStyles,} from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import Link from '@material-ui/core/Link';
 import makeStyles from '@material-ui/styles/makeStyles';
@@ -18,93 +18,8 @@ import { CartItemType } from '../types/types';
 // TODO : remove uncessarly css classes
 const useStyles = makeStyles(() =>
   createStyles({
-    ul: {
-      fontFamily: 'DIN Next,sans-serif',
-      fontWeight: 400,
-      fontStyle: 'normal',
-      fontSize: '17px',
-      lineHeight: 1.5,
-      color: '#202020',
-      webkitFontSmoothing: 'antialiased',
-      textRendering: 'optimizeLegibility',
-      boxSizing: 'border-box',
-      padding: 0,
-      margin: '0 0 17px 17px',
-      alignItems: 'center',
-      marginBottom: 0,
-      marginRight: '17px',
-    },
-    li: {
-      fontFamily: 'DIN Next,sans-serif',
-      fontWeight: 400,
-      fontStyle: 'normal',
-      fontSize: '17px',
-      lineHeight: 1.5,
-      color: '#202020',
-      webkitFontSmoothing: 'antialiased',
-      textRendering: 'optimizeLegibility',
-      boxSizing: 'border-box',
-      position: 'relative',
-      display: 'inline-block',
-      margin: 0,
-      lineHeigh: 1,
-      whiteSpace: 'normal',
-      marginBottom: ' 0px',
-    },
-    a: {
-      fontSize: '17px',
-      webkitFontSmoothing: 'antialiased',
-      textRendering: 'optimizeLegibility',
-      lineHeight: 1,
-      boxSizing: 'border-box',
-      transition: 'all 0.3s ease',
-
-      fontFamily: 'DIN Next,sans-serif',
-      fontWeight: 700,
-      fontStyle: 'normal',
-      textTransform: 'initial',
-      letterSpacing: '0.5px',
-      display: 'inline-block',
-      textDecoration: 'none',
-      padding: '8px',
-      whiteSpace: 'nowrap',
-      color: '#202020',
-    },
-    header: {
-      backgroundColor: '#fff',
-      color: 'black',
-      boxShadow: '0px 0px 0px 0px',
-      top: '0px',
-      // height: '80px', we wil remove comment when links are in the center
-      margin: '0 auto',
-    },
-    topHeader: {
-      backgroundColor: 'black',
-      color: 'white',
-      textAlign: 'center',
-      paddingTop: '7px',
-      paddingBottom: '7px',
-      fontFamily: 'DIN Next,sans-serif',
-      fontWeight: 700,
-      fontStyle: 'normal',
-      textTransform: 'initial',
-      letterspacing: '0.5pX',
-      marginTop: '0px',
-      alignItems: 'center',
-      fontSize: '17px',
-      lineHeight: '1.2',
-      marginButtom: '0px',
-    },
-
-    flex1: {
-      flexGrow: 1,
-    },
-    flex2: {
-      flexGrow: 3,
-    },
-
     drawer_header: {
-      width: '450px',
+      width: '450px', 
     },
     title2: {
       paddingLeft: '16px',
@@ -113,6 +28,8 @@ const useStyles = makeStyles(() =>
       height: '80px',
       display: 'flex',
       alignItems: 'center',
+     
+       
     },
     title3: {
       width: '370px',
@@ -196,82 +113,110 @@ const useStyles = makeStyles(() =>
       width: '450px',
       height: '518px',
       display: 'flex',
-
       backgroundColor: '#f7f7f7',
+      position:'relative'
+      
     },
     inner_container22: {
       width: '418px',
-      height: '224px',
       padding: '16px',
       marginTop: '30px',
       display: 'flex',
       backgroundColor: '#f7f7f7',
+      flexDirection:'column',
+      position:'absolute'
+     
     },
     inner_container23: {
       width: '418px',
       height: '113px',
       paddingBottom: '16px',
       marginBottom: '16px',
-      borderBottom: '1px solid #f2f2f2',
+      borderBottom: '2px solid #f2f2f2',
       backgroundColor: '#f7f7f7',
       display: 'flex',
+      
     },
     inner_container24: {
       width: '418px',
       height: '163px',
       padding: '16px',
       minHeight: '130px',
-      position: 'absolute',
+      position: 'fixed',
       display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
       backgroundColor: '#fff',
       bottom: 0,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     root: { display: 'flex' },
     details: {
-      height: '44px',
-      display: 'flex',
-      flexDirection: 'column',
+        height: '79px',
+        width:'290px',
+        padding:'13px 0px 0px 13px', 
+       
+            
+    },
+    hover: {
+      '&:hover': {
+        opacity: 0.6,
+      },
     },
     cover: {
-      width: 113,
+      width: 103,
+      height:103
     },
     content: {
       flex: '1 0 auto',
     },
-
-    controls: {
+product:{
+position:'relative',
+},
+    quantity: {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center',
-      top: 0,
-      // paddingLeft: theme.spacing(1),
-      // paddingBottom: theme.spacing(1),
+      position:'absolute',
+      top: 5,
+   
+    },
+    price: {
+      display: 'flex',
+      alignItems: 'center',
+      position:'absolute',
+      right:0,
+      top: 15,
+      fontFamily: '"DIN Next",sans-serif',
+      fontWeight: 700,
+      fontStyle: 'normal',
+      textTransform: 'initial',
+      letterSpacing: '0.5px',
     },
     playIcon: {
       height: 38,
       width: 38,
     },
     link: {
-      fontFamily: 'DIN Next,sans-serif',
-      fontWeight: 700,
-      fontStyle: 'normal',
-      textTransform: 'initial',
-      letterSpacing: '0px',
-      color: '#202020',
-      underline: 'none',
-      fontSize: '17px',
-    },
-    contenu: {
-      height: '40px',
-      paddingTop: '16px',
-      paddingBottom: '0px',
-      paddingLeft: '16px',
-    },
+     
+        fontSize: '18px',
+        display: 'block',
+        marginTop: '0px',
+        lineHeight: '1,5',
+        textRendering: 'optimizeLegibility',
+        color: '#202020',
+        fontFamily: '"ITC Caslon No 224",serif',
+        fontWeight: 900,
+        fontStyle: 'normal',
+        textTransform: 'initial',
+        letterSpacing: '0px',
+        boxSizing: 'border-box',
+        listStyle: ' Arabic-indic',
+        webkitFontSmoothing: 'antialiased',
+        underline: 'none',
+      },
+   
+    
     button2: {
-      backgroundColor: '#f2f2f2',
+      backgroundColor:'#f2f2f2',
       borderColor: '#f2f2f2',
       color: '#202020',
       transition: 'all 0.3s ease',
@@ -282,17 +227,75 @@ const useStyles = makeStyles(() =>
       letterSpacing: '0.5px',
       border: '1px solid #f2f2f2',
       borderRadius: '3px',
-      lineHeight: 1.2,
-      display: 'inherit',
+      lineHeight: '37px',  
       textAlign: 'center',
-      fontSize: '29px',
-      marginTop: '5px',
-      marginLet: '0px',
+      fontSize: '27px',
+      width:'40px',
+      height:'39px',
       '&:hover': {
         backgroundColor: '#f2f2f2',
         opacity: 0.6,
       },
     },
+    count_quantity:{
+      fontSize: '17px',
+      paddingLeft:'13px',
+      paddingRight:'13px',
+    },
+    position2:{
+      position:'absolute',
+      right:30,
+      top:40, 
+      width:'50px',
+      fontFamily: '"DIN Next",sans-serif',
+      fontWeight: 700,
+      fontStyle: 'normal',
+      textTransform: 'initial',
+      letterSpacing: '0.5px',
+      
+    },
+    position1:{
+      position:'absolute',
+      left:30,
+      top:40, 
+      width:'50px',
+      fontFamily: '"DIN Next",sans-serif',
+      fontWeight: 700,
+      fontStyle: 'normal',
+      textTransform: 'initial',
+      letterSpacing: '0.5px', 
+    },
+    position3:{
+      display: 'flex',
+      textAlign: 'center',
+      justifyContent: 'center',
+    },
+    button3:{
+      backgroundColor: '#5600e3',
+      borderColor: '#5600e3',
+      color: '#fff',
+      transition: 'all 0.3s ease',
+      fontFamily: '"DIN Next",sans-serif',
+      fontWeight: 700,
+      fontStyle: 'normal',
+      textTransform: 'initial',
+      letterSpacing: '0.5px',
+      border: '1px solid #f2f2f2',
+      borderRadius: '3px',
+      padding: '16px 24px',
+      marginTop:'50px',
+      lineHeight: 1.5,
+      fontSize: '17px',
+      width:'100%',
+      
+      '&:hover': {
+        backgroundColor: '#5600e3',
+        opacity: 0.6,
+      },
+      
+    },
+
+    
   })
 );
 interface PropsType {
@@ -308,6 +311,13 @@ function CartDrawer({
   cartItmes,
 }: PropsType) {
   const classes = useStyles();
+  const [count,setCount]=useState(1);
+  const incrementProduct = ()=>{
+  setCount(count+1);
+  };
+  const decrementProduct = ()=>{
+    setCount(count-1);
+    };
   return (
     <div className={classes.drawer_header}>
       <Drawer anchor='right' open={open} onClose={handleDrawerClose}>
@@ -320,9 +330,9 @@ function CartDrawer({
               Your Cart{' '}
             </a>
           </div>
-          <IconButton onClick={handleDrawerClose}>
-            <CloseIcon className={classes.close_button} fontSize='small' />
-          </IconButton>
+         
+            <button onClick={handleDrawerClose} className={classes.button2}>×</button>
+          
         </div>
         {emptyCart ? (
           <div className={classes.inner_container}>
@@ -340,35 +350,50 @@ function CartDrawer({
         ) : (
           <div className={classes.inner_container21}>
             <div className={classes.inner_container22}>
+            {cartItmes.map((item) => {
+              return (
+                <>
               <div className={classes.inner_container23}>
-                <CardMedia
+               <CardMedia
                   className={classes.cover}
-                  image='https://images-na.ssl-images-amazon.com/images/I/61-KUPluVYL._AC_SL1500_.jpg'
-                  title='Live from space album cover'
+                 
+                  image={item.imageUrl }
                 />
-
-                <div className={classes.details}>
-                  <CardContent className={classes.contenu}>
-                    <Link href='#' className={classes.link}>
+                  <CardContent className={classes.details}>
+                    <div className={classes.hover}>
+                    <Link href='#' className={classes.link} >
                       {' '}
-                      Rollable Keyboard
+                      {item.title}
                     </Link>
+                    </div> 
                     <Typography variant='subtitle1' color='textSecondary'>
-                      Red
+                      {item.variations}
                     </Typography>
-                  </CardContent>
-                  <div className={classes.controls}>
-                    <Button size='small' className={classes.button2}>
-                      -
-                    </Button>
-                    <span>1</span>
-                    <Button className={classes.button2}>+</Button>
+                    
+                  <div className={classes.product}>
+                  <div className={classes.quantity}>
+                    <button  className={classes.button2}onClick={decrementProduct}>−</button>
+                   <span className={classes.count_quantity} >{count}</span>
+                    <button  onClick={incrementProduct} className={classes.button2}>+</button>
                   </div>
+                  <div className={classes.price}>$18.31</div>
+                  </div>
+                  </CardContent>
+                  
                 </div>
-              </div>
+                </>
+                );
+        })}     
             </div>
 
-            <div className={classes.inner_container24}></div>
+            <div className={classes.inner_container24}>
+            <div className={classes.position1}>Subtotal</div>
+              <div className={classes.position2}>$68.98</div>
+          
+               <Button className={classes.button3}><LockIcon/>CHECK OUT</Button> 
+          
+              
+            </div>
           </div>
         )}
       </Drawer>
