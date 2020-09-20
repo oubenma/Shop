@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 import IconButton from '@material-ui/core/IconButton';
 import LockIcon from '@material-ui/icons/Lock';
@@ -8,7 +8,8 @@ import {
   Button,
   CardContent,
   Typography,
-  createStyles,} from '@material-ui/core';
+  createStyles,
+} from '@material-ui/core';
 import CardMedia from '@material-ui/core/CardMedia';
 import Link from '@material-ui/core/Link';
 import makeStyles from '@material-ui/styles/makeStyles';
@@ -19,7 +20,7 @@ import { CartItemType } from '../types/types';
 const useStyles = makeStyles(() =>
   createStyles({
     drawer_header: {
-      width: '450px', 
+      width: '450px',
     },
     title2: {
       paddingLeft: '16px',
@@ -28,8 +29,6 @@ const useStyles = makeStyles(() =>
       height: '80px',
       display: 'flex',
       alignItems: 'center',
-     
-       
     },
     title3: {
       width: '370px',
@@ -114,8 +113,7 @@ const useStyles = makeStyles(() =>
       height: '518px',
       display: 'flex',
       backgroundColor: '#f7f7f7',
-      position:'relative'
-      
+      position: 'relative',
     },
     inner_container22: {
       width: '418px',
@@ -123,9 +121,8 @@ const useStyles = makeStyles(() =>
       marginTop: '30px',
       display: 'flex',
       backgroundColor: '#f7f7f7',
-      flexDirection:'column',
-      position:'absolute'
-     
+      flexDirection: 'column',
+      position: 'absolute',
     },
     inner_container23: {
       width: '418px',
@@ -135,7 +132,6 @@ const useStyles = makeStyles(() =>
       borderBottom: '2px solid #f2f2f2',
       backgroundColor: '#f7f7f7',
       display: 'flex',
-      
     },
     inner_container24: {
       width: '418px',
@@ -151,11 +147,9 @@ const useStyles = makeStyles(() =>
     },
     root: { display: 'flex' },
     details: {
-        height: '79px',
-        width:'290px',
-        padding:'13px 0px 0px 13px', 
-       
-            
+      height: '79px',
+      width: '290px',
+      padding: '13px 0px 0px 13px',
     },
     hover: {
       '&:hover': {
@@ -164,26 +158,25 @@ const useStyles = makeStyles(() =>
     },
     cover: {
       width: 103,
-      height:103
+      height: 103,
     },
     content: {
       flex: '1 0 auto',
     },
-product:{
-position:'relative',
-},
+    product: {
+      position: 'relative',
+    },
     quantity: {
       display: 'flex',
       alignItems: 'center',
-      position:'absolute',
+      position: 'absolute',
       top: 5,
-   
     },
     price: {
       display: 'flex',
       alignItems: 'center',
-      position:'absolute',
-      right:0,
+      position: 'absolute',
+      right: 0,
       top: 15,
       fontFamily: '"DIN Next",sans-serif',
       fontWeight: 700,
@@ -196,27 +189,25 @@ position:'relative',
       width: 38,
     },
     link: {
-     
-        fontSize: '18px',
-        display: 'block',
-        marginTop: '0px',
-        lineHeight: '1,5',
-        textRendering: 'optimizeLegibility',
-        color: '#202020',
-        fontFamily: '"ITC Caslon No 224",serif',
-        fontWeight: 900,
-        fontStyle: 'normal',
-        textTransform: 'initial',
-        letterSpacing: '0px',
-        boxSizing: 'border-box',
-        listStyle: ' Arabic-indic',
-        webkitFontSmoothing: 'antialiased',
-        underline: 'none',
-      },
-   
-    
+      fontSize: '18px',
+      display: 'block',
+      marginTop: '0px',
+      lineHeight: '1,5',
+      textRendering: 'optimizeLegibility',
+      color: '#202020',
+      fontFamily: '"ITC Caslon No 224",serif',
+      fontWeight: 900,
+      fontStyle: 'normal',
+      textTransform: 'initial',
+      letterSpacing: '0px',
+      boxSizing: 'border-box',
+      listStyle: ' Arabic-indic',
+      webkitFontSmoothing: 'antialiased',
+      underline: 'none',
+    },
+
     button2: {
-      backgroundColor:'#f2f2f2',
+      backgroundColor: '#f2f2f2',
       borderColor: '#f2f2f2',
       color: '#202020',
       transition: 'all 0.3s ease',
@@ -227,50 +218,49 @@ position:'relative',
       letterSpacing: '0.5px',
       border: '1px solid #f2f2f2',
       borderRadius: '3px',
-      lineHeight: '37px',  
+      lineHeight: '37px',
       textAlign: 'center',
       fontSize: '27px',
-      width:'40px',
-      height:'39px',
+      width: '40px',
+      height: '39px',
       '&:hover': {
         backgroundColor: '#f2f2f2',
         opacity: 0.6,
       },
     },
-    count_quantity:{
+    count_quantity: {
       fontSize: '17px',
-      paddingLeft:'13px',
-      paddingRight:'13px',
+      paddingLeft: '13px',
+      paddingRight: '13px',
     },
-    position2:{
-      position:'absolute',
-      right:30,
-      top:40, 
-      width:'50px',
+    position2: {
+      position: 'absolute',
+      right: 30,
+      top: 40,
+      width: '50px',
       fontFamily: '"DIN Next",sans-serif',
       fontWeight: 700,
       fontStyle: 'normal',
       textTransform: 'initial',
       letterSpacing: '0.5px',
-      
     },
-    position1:{
-      position:'absolute',
-      left:30,
-      top:40, 
-      width:'50px',
+    position1: {
+      position: 'absolute',
+      left: 30,
+      top: 40,
+      width: '50px',
       fontFamily: '"DIN Next",sans-serif',
       fontWeight: 700,
       fontStyle: 'normal',
       textTransform: 'initial',
-      letterSpacing: '0.5px', 
+      letterSpacing: '0.5px',
     },
-    position3:{
+    position3: {
       display: 'flex',
       textAlign: 'center',
       justifyContent: 'center',
     },
-    button3:{
+    button3: {
       backgroundColor: '#5600e3',
       borderColor: '#5600e3',
       color: '#fff',
@@ -283,19 +273,16 @@ position:'relative',
       border: '1px solid #f2f2f2',
       borderRadius: '3px',
       padding: '16px 24px',
-      marginTop:'50px',
+      marginTop: '50px',
       lineHeight: 1.5,
       fontSize: '17px',
-      width:'100%',
-      
+      width: '100%',
+
       '&:hover': {
         backgroundColor: '#5600e3',
         opacity: 0.6,
       },
-      
     },
-
-    
   })
 );
 interface PropsType {
@@ -311,13 +298,13 @@ function CartDrawer({
   cartItmes,
 }: PropsType) {
   const classes = useStyles();
-  const [count,setCount]=useState(1);
-  const incrementProduct = ()=>{
-  setCount(count+1);
+  const [count, setCount] = useState(1);
+  const incrementProduct = () => {
+    setCount(count + 1);
   };
-  const decrementProduct = ()=>{
-    setCount(count-1);
-    };
+  const decrementProduct = () => {
+    setCount(count - 1);
+  };
   return (
     <div className={classes.drawer_header}>
       <Drawer anchor='right' open={open} onClose={handleDrawerClose}>
@@ -330,9 +317,10 @@ function CartDrawer({
               Your Cart{' '}
             </a>
           </div>
-         
-            <button onClick={handleDrawerClose} className={classes.button2}>×</button>
-          
+
+          <button onClick={handleDrawerClose} className={classes.button2}>
+            ×
+          </button>
         </div>
         {emptyCart ? (
           <div className={classes.inner_container}>
@@ -350,49 +338,60 @@ function CartDrawer({
         ) : (
           <div className={classes.inner_container21}>
             <div className={classes.inner_container22}>
-            {cartItmes.map((item) => {
-              return (
-                <>
-              <div className={classes.inner_container23}>
-               <CardMedia
-                  className={classes.cover}
-                 
-                  image={item.imageUrl }
-                />
-                  <CardContent className={classes.details}>
-                    <div className={classes.hover}>
-                    <Link href='#' className={classes.link} >
-                      {' '}
-                      {item.title}
-                    </Link>
-                    </div> 
-                    <Typography variant='subtitle1' color='textSecondary'>
-                      {item.variations}
-                    </Typography>
-                    
-                  <div className={classes.product}>
-                  <div className={classes.quantity}>
-                    <button  className={classes.button2}onClick={decrementProduct}>−</button>
-                   <span className={classes.count_quantity} >{count}</span>
-                    <button  onClick={incrementProduct} className={classes.button2}>+</button>
-                  </div>
-                  <div className={classes.price}>$18.31</div>
-                  </div>
-                  </CardContent>
-                  
-                </div>
-                </>
+              {cartItmes.map((item) => {
+                return (
+                  <>
+                    <div className={classes.inner_container23}>
+                      <CardMedia
+                        className={classes.cover}
+                        image={item.imageUrl}
+                      />
+                      <CardContent className={classes.details}>
+                        <div className={classes.hover}>
+                          <Link href='#' className={classes.link}>
+                            {' '}
+                            {item.title}
+                          </Link>
+                        </div>
+                        <Typography variant='subtitle1' color='textSecondary'>
+                          {item.variations}
+                        </Typography>
+
+                        <div className={classes.product}>
+                          <div className={classes.quantity}>
+                            <button
+                              className={classes.button2}
+                              onClick={decrementProduct}
+                            >
+                              −
+                            </button>
+                            <span className={classes.count_quantity}>
+                              {count}
+                            </span>
+                            <button
+                              onClick={incrementProduct}
+                              className={classes.button2}
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className={classes.price}>$18.31</div>
+                        </div>
+                      </CardContent>
+                    </div>
+                  </>
                 );
-        })}     
+              })}
             </div>
 
             <div className={classes.inner_container24}>
-            <div className={classes.position1}>Subtotal</div>
+              <div className={classes.position1}>Subtotal</div>
               <div className={classes.position2}>$68.98</div>
-          
-               <Button className={classes.button3}><LockIcon/>CHECK OUT</Button> 
-          
-              
+
+              <Button className={classes.button3}>
+                <LockIcon />
+                CHECK OUT
+              </Button>
             </div>
           </div>
         )}
