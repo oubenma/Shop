@@ -84,7 +84,7 @@ const useStyles = makeStyles(() =>
       boxShadow: '0px 0px 0px 0px',
       top: '0px',
       // height: '80px', we wil remove comment when links are in the center
-      margin: '0 auto',
+    
     },
     topHeader: {
       backgroundColor: 'black',
@@ -219,7 +219,7 @@ function NavBar() {
         <span> Great Products, Free Shipping & Easy Returns!</span>
       </div>
       <AppBar position='sticky' className={classes.header}>
-        <div style={{ padding: '0 30px 0 30px' }}>
+        <div  style={{ padding: '0 30px 0 30px'}}>
           <div className={classes.header}>
             <Toolbar>
               <div className={classes.flex2}>
