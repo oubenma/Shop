@@ -9,11 +9,12 @@ const App = () => {
     <Router>
       <ApplicationProvider>
         <Switch>
+          <Route path={'/product'}>
+            <ProductPage />
+          </Route>
+
           <Route exact path={'/'}>
             <HomePage />
-          </Route>
-          <Route path={'/Product'}>
-          <ProductPage/>
           </Route>
         </Switch>
       </ApplicationProvider>

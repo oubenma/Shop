@@ -84,7 +84,6 @@ const useStyles = makeStyles(() =>
       boxShadow: '0px 0px 0px 0px',
       top: '0px',
       // height: '80px', we wil remove comment when links are in the center
-    
     },
     topHeader: {
       backgroundColor: 'black',
@@ -110,7 +109,7 @@ const useStyles = makeStyles(() =>
     flex2: {
       flexGrow: 3,
     },
-    
+
     boxButton: {
       justifyContent: 'center',
       alignItems: 'center',
@@ -119,13 +118,12 @@ const useStyles = makeStyles(() =>
     close_button: {
       color: '#202020',
     },
-    
   })
 );
 
 function NavBar() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean>(false);
   const [cartItmes, setCartItmes] = useState<CartItemType[]>([]);
   const emptyCart = false;
 
@@ -166,12 +164,14 @@ function NavBar() {
         imageUrl: 'https://picsum.photos/200/200',
         productPrice: 133,
         quntity: 5,
-      },{
+      },
+      {
         title: 'Lorem ipsum dolor sit amet.',
         imageUrl: 'https://picsum.photos/200/200',
         productPrice: 133,
         quntity: 5,
-      },{
+      },
+      {
         title: 'Lorem ipsum dolor sit amet.',
         imageUrl: 'https://picsum.photos/200/200',
         productPrice: 133,
@@ -201,7 +201,6 @@ function NavBar() {
         productPrice: 133,
         quntity: 5,
       },
-      
     ]);
   }, []);
 
@@ -219,7 +218,7 @@ function NavBar() {
         <span> Great Products, Free Shipping & Easy Returns!</span>
       </div>
       <AppBar position='sticky' className={classes.header}>
-        <div  style={{ padding: '0 30px 0 30px'}}>
+        <div style={{ padding: '0 30px 0 30px' }}>
           <div className={classes.header}>
             <Toolbar>
               <div className={classes.flex2}>
