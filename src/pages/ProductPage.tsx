@@ -1,12 +1,13 @@
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
 import React, { useEffect, useState } from 'react';
+import { makeStyles, createStyles,} from '@material-ui/core/styles';
+import {  Paper } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import NavBar from '../components/NavBar';
 import ProductCard from '../components/ProductCard';
-import coffeMakerList from '../components/constants';
+import {coffeMakerList} from '../components/constants';
+import ReviewsSection from '../components/ReviewsSection';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     container: {
       paddingTop: '60px',
@@ -23,27 +24,28 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingBottom: '40px',
       marginRight: '71.667px',
       marginLeft: '71.667px',
-      height: '390px',
+     
     },
     container3: {
       paddingBottom: '20px',
-      height: '1070px',
       marginRight: '30.667px',
       marginLeft: '30.667px',
+      
+      
     },
     container4: {
       paddingBottom: '60px',
       paddingTop: '60px',
-      height: '587px',
+      
       marginRight: '71.667px',
       marginLeft: '71.667px',
     },
     container5: {
       paddingBottom: '60px',
       paddingTop: '60px',
-      height: '518px',
       marginRight: '71.667px',
       marginLeft: '71.667px',
+  
     },
     paper: {
       height: '1733px',
@@ -80,7 +82,9 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: 'center',
       color: 'black',
       backgroundColor: '#4dffdb',
+      position:'relative'
     },
+   
   })
 );
 function Product() {
@@ -89,10 +93,21 @@ function Product() {
   useEffect(() => {
     console.log('rani khdmt');
   }, []);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
+
+    setOpen(false);
+  };
 
   return (
     <>
       <NavBar />
+      
       <div className={classes.root}>
         <div className={classes.container}>
           <Grid container spacing={3}>
@@ -126,7 +141,7 @@ function Product() {
           </Grid>
         </div>
         <div className={classes.container2}>
-          <div>partie dyal frequently bought togrther</div>
+          <div>partie dyal frequently bought together</div>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={6}>
               <Paper className={classes.paper3}>togrther bought</Paper>
@@ -136,25 +151,12 @@ function Product() {
             </Grid>
           </Grid>
         </div>
+         {/* reviews section here */}
         <div className={classes.container3}>
-          <div>partie dyl reviews</div>
-          <Grid container spacing={3}>
-            {coffeMakerList.map((product) => {
-              return (
-                <Grid item xs={4} sm={3} md={2}>
-                  <ProductCard
-                    OldPrice={product.OldPrice}
-                    title={product.title}
-                    SalePrice={product.SalePrice}
-                    value={product.value}
-                    imageUrl={product.imageUrl}
-                  />
-                </Grid>
-              );
-            })}
-          </Grid>
-        </div>
-
+         <ReviewsSection/>
+          </div>
+        
+ {/*end reviews here */}
         <div className={classes.container4}>
           <div>partie dyla you may also like</div>
           <Grid container spacing={3}>
@@ -169,23 +171,25 @@ function Product() {
             </Grid>
           </Grid>
         </div>
+        {/* dont forget alingItem ens justify resize images  and the eight of review section*/}
         <div className={classes.container5}>
-          <div>partie dyal similar products</div>
+          <div >partie dyal similar products</div>
           <Grid container spacing={3}>
-            {coffeMakerList.map((product) => {
-              return (
-                <Grid item xs={6} sm={3} md={3}>
-                  <ProductCard
-                    OldPrice={product.OldPrice}
-                    title={product.title}
-                    SalePrice={product.SalePrice}
-                    value={product.value}
-                    imageUrl={product.imageUrl}
-                  />
-                </Grid>
-              );
-            })}
-          </Grid>
+        {coffeMakerList.map((product) => {
+          return (
+            <Grid item xs={12} sm={6} md={3}>
+              <ProductCard
+                OldPrice={product.OldPrice}
+                title={product.title}
+                SalePrice={product.SalePrice}
+                value={product.value}
+                imageUrl={product.imageUrl}
+              />
+            </Grid>
+          );
+        })}
+      </Grid>
+          
         </div>
       </div>
     </>
