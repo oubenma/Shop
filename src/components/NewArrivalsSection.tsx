@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import coffeMakerList from './constants';
+import {coffeMakerList} from './constants';
 import ProductCard from './ProductCard';
 
 const useStyles = makeStyles({
