@@ -7,7 +7,7 @@ import {reviewsList} from '../components/constants';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button/Button';
+import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -15,6 +15,9 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import IconButton from '@material-ui/core/IconButton';
 import { CardMedia } from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile/GridListTile';
+import { TimeToLeave } from '@material-ui/icons';
 const useStyles = makeStyles(() =>
   createStyles({
     reviewHeader:{
@@ -38,7 +41,7 @@ const useStyles = makeStyles(() =>
       },
       rootReview: {
         backgroundColor:'#e6e6e6',
-         maxWidth: '250vw',
+        width: '100%',
          cursor: ' pointer',
          boxShadow: 'none', 
        },
@@ -95,7 +98,18 @@ const useStyles = makeStyles(() =>
         position:'absolute',
         top:419,
         left:915
-      }
+      },
+      rootee: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+   
+      },
+      gridList: {
+        width: 500,
+        height: 450,
+      },
     })
     );  
 
@@ -118,8 +132,9 @@ export default function NewArrivalsSection() {
                 </Button>
             </Grid>
          </Grid>
-         {/*<Grid container spacing={2} className={classes.gridContainer}>
-                <Grid item xs={6} sm={3} md={3}>
+         <Grid container spacing={2} className={classes.gridContainer}>
+                <Grid item  container xs={6} sm={3} md={3}  direction='column'spacing={1}>
+                    <Grid item>
                     <Card className={classes.rootReview}>
                         <CardMedia className={classes.media} image='https://picsum.photos/200/200' />
                         <CardContent className={classes.para}>
@@ -135,7 +150,8 @@ export default function NewArrivalsSection() {
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={6} sm={3} md={3}>
+               
+         <Grid item>
                     <Card className={classes.rootReview}>
                         <CardMedia className={classes.media} image='https://picsum.photos/200/200' />
                         <CardContent className={classes.para}>
@@ -147,12 +163,15 @@ export default function NewArrivalsSection() {
                                 defaultValue={3}
                                 readOnly
                                 size='small' />
-                            <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique'</p>
+                            <p> la composition et la mise en page avant impression.  quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique'</p>
 
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={6} sm={3} md={3}>
+                </Grid>
+                <Grid item  container xs={6} sm={3} md={3}  direction='column'spacing={1}>
+                    
+                    <Grid item>
                     <Card className={classes.rootReview}>
                         <CardMedia className={classes.media} image='https://picsum.photos/200/200' />
                         <CardContent className={classes.para}>
@@ -164,11 +183,11 @@ export default function NewArrivalsSection() {
                                 defaultValue={3}
                                 readOnly
                                 size='small' />
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda excepturi suscipit quo nostrum libero aliquid cum odit quae.</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumendakkjjl lklkmlù kjlkmllùm jkkjlkm  excepturi cum odit quae.</p>
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={6} sm={3} md={3}>
+                    <Grid item>
                     <Card className={classes.rootReview}>
                         <CardMedia className={classes.media} image='https://picsum.photos/200/200' />
                         <CardContent className={classes.para}>
@@ -184,7 +203,9 @@ export default function NewArrivalsSection() {
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={6} sm={3} md={3} className={classes.rev1}>
+                </Grid>
+                <Grid item  container xs={6} sm={3} md={3}  direction='column'spacing={1}>
+                    <Grid item >
                     <Card className={classes.rootReview}>
                         <CardMedia className={classes.media} image='https://picsum.photos/200/200' />
                         <CardContent className={classes.para}>
@@ -196,13 +217,31 @@ export default function NewArrivalsSection() {
                                 defaultValue={3}
                                 readOnly
                                 size='small' />
-                            <p> sit amet consectetur adipisicing elit. Assumenda excepturi suscipit quo nostrum libero aliquid cum odit quae.</p>
+                            <p> sit amet consectetur adipisicing elit.  suscipit quo nostrum libero aliquid cum odit quae.</p>
                         </CardContent>
                     </Card>
+                    </Grid>
+                    <Grid item>
+                <Card className={classes.rootReview}>
+                        <CardMedia className={classes.media} image='https://www.w3schools.com/w3images/rocks.jpg' />
+                        <CardContent className={classes.para}>
+                            <Typography>
+                                <span className={classes.title}>Mohammed oubenma</span>
+                                <span><IconButton><CheckCircleIcon fontSize="small" className={classes.title} /></IconButton></span></Typography>
+                            <Rating
+                                name='read-only'
+                                defaultValue={3}
+                                readOnly
+                                size='small' />
+                            <p>isicing elit. Assumenda excepturi suscipit quo nostrum libero aliquid cum odit quae.</p>
+                        </CardContent>
+                    </Card>
+                    </Grid>
                 </Grid>
-                <Grid item xs={6} sm={3} md={3} className={classes.rev2}>
+                <Grid item  container xs={6} sm={3} md={3}  direction='column'spacing={1}>
+                <Grid item  >
                     <Card className={classes.rootReview}>
-                        <CardMedia className={classes.media} image='https://picsum.photos/200/200' />
+                        <CardMedia className={classes.media} image='https://www.w3schools.com/w3images/rocks.jpg' />
                         <CardContent className={classes.para}>
                             <Typography>
                                 <span className={classes.title}>Mohammed oubenma</span>
@@ -216,7 +255,8 @@ export default function NewArrivalsSection() {
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={6} sm={3} md={3} className={classes.rev3}>
+               
+                <Grid item>
                     <Card className={classes.rootReview}>
                         <CardMedia className={classes.media} image='https://picsum.photos/200/200' />
                         <CardContent className={classes.para}>
@@ -228,40 +268,42 @@ export default function NewArrivalsSection() {
                                 defaultValue={3}
                                 readOnly
                                 size='small' />
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda excepturi suscipit quo nostrum libero aliquid cum odit quae.</p>
+                            <p>da excepturi suscipit quo nostrum libero aliquid cum odit quae.</p>
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item xs={6} sm={3} md={3} className={classes.rev4}>
-                    <Card className={classes.rootReview}>
-                        <CardMedia className={classes.media} image='https://picsum.photos/200/200' />
-                        <CardContent className={classes.para}>
-                            <Typography>
-                                <span>Zakaria El yemlahi</span>
-                                <span><IconButton><CheckCircleIcon fontSize="small" className={classes.title} /></IconButton></span></Typography>
-                            <Rating
-                                name='read-only'
-                                defaultValue={3}
-                                readOnly
-                                size='small' />
-                            <p>scipit quo nostrum libero aliquid cum odit quae.</p>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            </Grid> */}
+             </Grid>
+             
+            </Grid> 
 
-            <Grid container spacing={2} direction="row">
+            {/* <Grid container spacing={2} >
                 {reviewsList.map((review) => {
                     return (
-                        <Grid item xs={6} sm={3} md={3}>
+                        <Grid item  xs={6} sm={3} md={3}  >
+                        <Grid  item>
                             <Reviews
                                 name={review.name}
                                 value={review.value}
                                 imageUrl={review.imageUrl}
                                 description={review.description} />
                         </Grid>
+                        </Grid>
                     );
                 })}
-            </Grid></>
+            </Grid> */}
+            {/* <div className={classes.rootee}>
+       <GridList cellHeight={'auto'}  cols={5}  >
+        {reviewsList.map((tile) => ( 
+          <GridListTile key={tile.imageUrl}  rows={5}  >
+             <Reviews
+            name={tile.name}
+            value={tile.value}
+            imageUrl={tile.imageUrl}
+            description={tile.description} />
+          </GridListTile>
+        ))}
+      </GridList>
+    </div> */}
+    </>
            );
         }

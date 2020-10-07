@@ -93,23 +93,16 @@ function Product() {
   useEffect(() => {
     console.log('rani khdmt');
   }, []);
-  const [open, setOpen] = React.useState(false);
+ 
 
-  const handleClick = () => {
-    setOpen(true);
-  };
 
-  const handleClose = (event: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
-
-    setOpen(false);
-  };
 
   return (
     <>
-      <NavBar />
-      
+  <NavBar />
+
       <div className={classes.root}>
-        <div className={classes.container}>
+       <div className={classes.container}>
           <Grid container spacing={3}>
             <Grid
               item
@@ -119,27 +112,27 @@ function Product() {
               container
               direction='column'
               spacing={2}
-            >
+            > 
               {/* image galery */}
 
-              <Grid item>
+               <Grid item>
                 <Paper className={classes.paper1}>image of thr product</Paper>
               </Grid>
               <Grid item>
                 <Paper className={classes.paper2}>slick part</Paper>
-              </Grid>
+              </Grid> 
               {/* end image gallery */}
-            </Grid>
+             </Grid> 
             <Grid item xs={12} sm={12} md={6}>
               {/* description of the produdct here */}
               <Paper className={classes.paper}>
                 description of the product
-              </Paper>
+              </Paper> 
 
               {/*end  description of the produdct here */}
-            </Grid>
+             </Grid>
           </Grid>
-        </div>
+        </div> 
         <div className={classes.container2}>
           <div>partie dyal frequently bought together</div>
           <Grid container spacing={3}>
@@ -149,12 +142,12 @@ function Product() {
             <Grid item xs={12} sm={12} md={6}>
               <Paper className={classes.paper4}>PRICE of the product</Paper>
             </Grid>
-          </Grid>
-        </div>
+          </Grid> 
+         </div> 
          {/* reviews section here */}
-        <div className={classes.container3}>
+          <div className={classes.container3}>
          <ReviewsSection/>
-          </div>
+          </div>  
         
  {/*end reviews here */}
         <div className={classes.container4}>
@@ -170,8 +163,7 @@ function Product() {
               <Paper className={classes.paper5}> third haja</Paper>
             </Grid>
           </Grid>
-        </div>
-        {/* dont forget alingItem ens justify resize images  and the eight of review section*/}
+        </div> 
         <div className={classes.container5}>
           <div >partie dyal similar products</div>
           <Grid container spacing={3}>
@@ -185,12 +177,12 @@ function Product() {
                 value={product.value}
                 imageUrl={product.imageUrl}
               />
-            </Grid>
+            </Grid> 
           );
         })}
       </Grid>
           
-        </div>
+        </div> 
       </div>
     </>
   );

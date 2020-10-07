@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import { ApplicationProvider } from './context/dataContext';
+import CheckoutPage from './pages/CheckoutPage';
 
 const App = () => {
   return (
@@ -11,6 +12,9 @@ const App = () => {
         <Switch>
           <Route path={'/product'}>
             <ProductPage />
+          </Route>
+          <Route path={'/checkout'}>
+            <CheckoutPage />
           </Route>
 
           <Route exact path={'/'}>
