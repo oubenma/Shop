@@ -67,13 +67,13 @@ export default function TrendingRightNow() {
         {coffeMakerList.map((product) => {
           return (
             <Grid item xs={12} sm={6} md={4}>
-              <ProductCard
+             <ProductCard
                 OldPrice={product.OldPrice}
                 title={product.title}
                 SalePrice={product.SalePrice}
                 value={product.value}
                 imageUrl={product.imageUrl}
-              />
+              /> 
             </Grid>
           );
         })}

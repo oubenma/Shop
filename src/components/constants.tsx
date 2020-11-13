@@ -1,64 +1,72 @@
 export const coffeMakerList =[
   {
+    id:1,
     title: 'Keurig K-Duo',
-    OldPrice: '$149.99',
-    SalePrice: '$100.99',
+    OldPrice: 149.99,
+    SalePrice: 100.99,
     value: 3,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/61-KUPluVYL._AC_SL1500_.jpg',
   },
   {
+    id:2,
     title: 'KRUPS Electric Spice',
-    OldPrice: '$149.99',
-    SalePrice: '$100.99',
+    OldPrice: 100.99,
+    SalePrice: 100.99,
     value: 3,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/71FhMLBP9XL._AC_SL1500_.jpg',
   },
   {
+    id:3,
     title: 'Hamilton Beach Flexbrew',
-    OldPrice: '$149.99',
-    SalePrice: '$100.99',
+    OldPrice: 100.99,
+    SalePrice: 100.99,
     value: 3,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/818rz3CIaFL._AC_SL1500_.jpg',
   },
   {
+    id:4,
     value: 3,
     title: 'Secura French Press',
-    OldPrice: '$149.99',
-    SalePrice: '$100.99',
+    OldPrice: 100.99,
+    SalePrice: 100.99,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/61XRMmXVwQL._AC_SL1500_.jpg',
   },
   {
+    id:5,
     value: 3,
     title: 'Cafe Du Chateau French',
-    OldPrice: '$149.99',
-    SalePrice: ' $100.99',
+    OldPrice: 100.99,
+    SalePrice: 100.99,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/81luUhz7ZlL._AC_SL1500_.jpg',
   },
   {
+    id:6,
     value: 3,
     title: 'LIVINGbasics Single  ',
-    OldPrice: '$149.99',
-    SalePrice: '$100.99',
+    OldPrice: 100.99,
+    SalePrice: 100.99,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/61KBB8K1wDL._AC_SL1000_.jpg',
   },
   {
+    id:7,
     title: 'Keurig K-Duo',
-    OldPrice: '$149.99',
-    SalePrice: '$100.99',
+    OldPrice: 100.99,
+    SalePrice: 100.99,
     value: 3,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/61-KUPluVYL._AC_SL1500_.jpg',
   },
   {
+    id:8,
     title: 'KRUPS Electric Spice',
-    OldPrice: '$149.99',
-    SalePrice: '$100.99',
+    OldPrice: 100.99,
+    SalePrice: 100.99,
     value: 3,
     imageUrl:
       'https://images-na.ssl-images-amazon.com/images/I/71FhMLBP9XL._AC_SL1500_.jpg',

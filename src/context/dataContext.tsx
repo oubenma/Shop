@@ -3,8 +3,8 @@ import PopularThisWeek from '../components/PopularThisWeek';
 
 type Product = {
   title: string;
-  oldPrice: string;
-  salePrice: string;
+  oldPrice: number;
+  salePrice: number;
   value: number;
   imageUrl: string;
 };
@@ -34,48 +34,48 @@ export const ApplicationProvider = (props: any) => {
     setPopularThisWeekProducts([
       {
         title: 'Hamilton Beach Flexbrew',
-        oldPrice: '$149.99',
-        salePrice: '$100.99',
+        oldPrice: 149.99,
+        salePrice: 149.99,
         value: 3,
         imageUrl:
           'https://images-na.ssl-images-amazon.com/images/I/818rz3CIaFL._AC_SL1500_.jpg',
       },
       {
         title: 'Hamilton Beach Flexbrew',
-        oldPrice: '$149.99',
-        salePrice: '$100.99',
+        oldPrice: 149.99,
+        salePrice: 149.99,
         value: 3,
         imageUrl:
           'https://images-na.ssl-images-amazon.com/images/I/818rz3CIaFL._AC_SL1500_.jpg',
       },
       {
         title: 'Hamilton Beach Flexbrew',
-        oldPrice: '$149.99',
-        salePrice: '$100.99',
+        oldPrice: 149.99,
+        salePrice: 149.99,
         value: 3,
         imageUrl:
           'https://images-na.ssl-images-amazon.com/images/I/818rz3CIaFL._AC_SL1500_.jpg',
       },
       {
         title: 'Hamilton Beach Flexbrew',
-        oldPrice: '$149.99',
-        salePrice: '$100.99',
+        oldPrice: 149.99,
+        salePrice: 149.99,
         value: 3,
         imageUrl:
           'https://images-na.ssl-images-amazon.com/images/I/818rz3CIaFL._AC_SL1500_.jpg',
       },
       {
         title: 'Hamilton Beach Flexbrew',
-        oldPrice: '$149.99',
-        salePrice: '$100.99',
+        oldPrice: 149.99,
+        salePrice: 149.99,
         value: 3,
         imageUrl:
           'https://images-na.ssl-images-amazon.com/images/I/818rz3CIaFL._AC_SL1500_.jpg',
       },
       {
         title: 'Hamilton Beach Flexbrew',
-        oldPrice: '$149.99',
-        salePrice: '$100.99',
+        oldPrice: 149.99,
+        salePrice: 149.99,
         value: 3,
         imageUrl:
           'https://images-na.ssl-images-amazon.com/images/I/818rz3CIaFL._AC_SL1500_.jpg',

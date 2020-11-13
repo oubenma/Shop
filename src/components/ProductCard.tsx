@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
 import { makeStyles } from '@material-ui/core/styles';
 import { CardMedia } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 const useStyles = makeStyles({
   root: {
     backgroundColor: 'transparent',
@@ -74,15 +75,16 @@ const useStyles = makeStyles({
 });
 
 interface propsType {
-  OldPrice: string;
+  
+  OldPrice: number;
   title: string;
-  SalePrice: string;
+  SalePrice: number;
   imageUrl: string;
   value: number;
 }
 const ProductCard = (props: propsType) => {
   const classes = useStyles();
-  const { OldPrice, SalePrice, title, imageUrl, value } = props;
+  const { OldPrice, SalePrice, title, imageUrl, value,} = props;
   return (
     <Card className={classes.root}>
       <CardMedia className={classes.media} image={imageUrl} />

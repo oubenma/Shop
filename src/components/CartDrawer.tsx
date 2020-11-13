@@ -303,6 +303,7 @@ function CartDrawer({
     setCount(count + 1);
   };
   const decrementProduct = () => {
+    if (count < 1) return;
     setCount(count - 1);
   };
   return (
