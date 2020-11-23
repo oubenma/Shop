@@ -1,97 +1,99 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { Paper } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import NavBar from "../components/NavBar";
-import ProductCard from "../components/ProductCard";
-import SideDescription from "../components/SideDescription";
-import { coffeMakerList } from "../components/constants";
-import ReviewsSection from "../components/ReviewsSection";
-import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
-import { RouteComponentProps } from "react-router-dom"
-import { getThemeProps } from "@material-ui/styles";
-import { isConstTypeReference } from "typescript";
+import React, { useEffect, useState } from 'react';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { Paper } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import NavBar from '../components/NavBar';
+import ProductCard from '../components/ProductCard';
+import SideDescription from '../components/SideDescription';
+import { coffeMakerList } from '../components/constants';
+import ReviewsSection from '../components/ReviewsSection';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
+import { RouteComponentProps } from 'react-router-dom';
+import { getThemeProps } from '@material-ui/styles';
+import { isConstTypeReference } from 'typescript';
 
 const useStyles = makeStyles(() =>
   createStyles({
     container: {
-      paddingTop: "60px",
-      paddingBottom: "60px",
+      paddingTop: '60px',
+      paddingBottom: '60px',
 
-      marginLeft: "300.667px",
+      marginLeft: '300.667px',
     },
     root: {
-      backgroundColor: "#ffffff",
+      backgroundColor: '#ffffff',
     },
     container2: {
-      paddingTop: "40px",
-      paddingBottom: "40px",
-      marginRight: "71.667px",
-      marginLeft: "71.667px",
+      paddingTop: '40px',
+      paddingBottom: '40px',
+      marginRight: '71.667px',
+      marginLeft: '71.667px',
     },
     container3: {
-      paddingBottom: "20px",
-      marginRight: "30.667px",
-      marginLeft: "30.667px",
+      paddingBottom: '20px',
+      marginRight: '30.667px',
+      marginLeft: '30.667px',
     },
     container4: {
-      paddingBottom: "60px",
-      paddingTop: "60px",
+      paddingBottom: '60px',
+      paddingTop: '60px',
 
-      marginRight: "71.667px",
-      marginLeft: "71.667px",
+      marginRight: '71.667px',
+      marginLeft: '71.667px',
     },
     container5: {
-      paddingBottom: "60px",
-      paddingTop: "60px",
-      marginRight: "71.667px",
-      marginLeft: "71.667px",
+      paddingBottom: '60px',
+      paddingTop: '60px',
+      marginRight: '71.667px',
+      marginLeft: '71.667px',
     },
     paper: {
-      height: "1733px",
-      textAlign: "center",
-      color: "black",
-      backgroundColor: "red",
+      height: '1733px',
+      textAlign: 'center',
+      color: 'black',
+      backgroundColor: 'red',
     },
     paper1: {
-      backgroundColor: "red",
+      backgroundColor: 'red',
     },
     paper2: {
-      height: "110px",
-      textAlign: "center",
-      color: "black",
-      backgroundColor: "blue",
+      height: '110px',
+      textAlign: 'center',
+      color: 'black',
+      backgroundColor: 'blue',
     },
     paper3: {
-      height: "130px",
-      textAlign: "center",
-      color: "black",
-      backgroundColor: "#ff99ff",
+      height: '130px',
+      textAlign: 'center',
+      color: 'black',
+      backgroundColor: '#ff99ff',
     },
     paper4: {
-      height: "110px",
-      textAlign: "center",
-      color: "black",
-      backgroundColor: "#66ccff",
+      height: '110px',
+      textAlign: 'center',
+      color: 'black',
+      backgroundColor: '#66ccff',
     },
     paper5: {
-      height: "344px",
-      textAlign: "center",
-      color: "black",
-      backgroundColor: "#4dffdb",
-      position: "relative",
+      height: '344px',
+      textAlign: 'center',
+      color: 'black',
+      backgroundColor: '#4dffdb',
+      position: 'relative',
     },
   })
 );
 
-function Product() {
-  // 
+function Product(props: any) {
+  //
 
   const classes = useStyles();
   const [id, setId] = useState<string>('');
   useEffect(() => {
-    console.log("rani khdmt");
+    setId(props.match.params.id);
+    console.log('hada howa id ');
+    console.log(props.match.params.id);
   }, []);
   // const [open, setOpen] = React.useState(false);
 
@@ -105,37 +107,37 @@ function Product() {
   // };
   const images = [
     {
-      original: "https://picsum.photos/600/550",
-      thumbnail: "https://picsum.photos/id/1018/250/150/",
+      original: 'https://picsum.photos/600/550',
+      thumbnail: 'https://picsum.photos/id/1018/250/150/',
     },
     {
-      original: "https://picsum.photos/600/550/",
-      thumbnail: "https://picsum.photos/id/1015/250/150/",
+      original: 'https://picsum.photos/600/550/',
+      thumbnail: 'https://picsum.photos/id/1015/250/150/',
     },
     {
-      original: "https://picsum.photos/600/500",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
+      original: 'https://picsum.photos/600/500',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/',
     },
     {
-      original: "https://picsum.photos/600/500",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
+      original: 'https://picsum.photos/600/500',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/',
     },
     {
-      original: "https://picsum.photos/600/500",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
+      original: 'https://picsum.photos/600/500',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/',
     },
     {
-      original: "https://picsum.photos/600/500",
-      thumbnail: "https://picsum.photos/id/1019/250/150/",
+      original: 'https://picsum.photos/600/500',
+      thumbnail: 'https://picsum.photos/id/1019/250/150/',
     },
   ];
-  
+
   return (
     <>
-  <NavBar />
+      <NavBar />
 
       <div className={classes.root}>
-       <div className={classes.container}>
+        <div className={classes.container}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={6}>
               {/* image galery */}
@@ -152,9 +154,9 @@ function Product() {
               {/* description of the produdct here */}
               <SideDescription id={id} />
               {/*end  description of the produdct here */}
-             </Grid>
+            </Grid>
           </Grid>
-        </div> 
+        </div>
         <div className={classes.container2}>
           <div>partie dyal frequently bought together</div>
           <Grid container spacing={3}>
@@ -164,7 +166,6 @@ function Product() {
             <Grid item xs={12} sm={12} md={6}>
               <Paper className={classes.paper4}>PRICE of the product</Paper>
             </Grid>
-            
           </Grid>
         </div>
         {/* reviews section here */}
@@ -186,26 +187,25 @@ function Product() {
               <Paper className={classes.paper5}> third haja</Paper>
             </Grid>
           </Grid>
-        </div> 
+        </div>
         <div className={classes.container5}>
           <div>partie dyal similar products</div>
           <Grid container spacing={3}>
-        {coffeMakerList.map((product) => {
-          return (
-            <Grid item xs={12} sm={6} md={3}>
-              <ProductCard
-                OldPrice={product.OldPrice}
-                title={product.title}
-                SalePrice={product.SalePrice}
-                value={product.value}
-                imageUrl={product.imageUrl}
-              />
-            </Grid> 
-          );
-        })}
-      </Grid>
-          
-        </div> 
+            {coffeMakerList.map((product) => {
+              return (
+                <Grid item xs={12} sm={6} md={3}>
+                  <ProductCard
+                    OldPrice={product.OldPrice}
+                    title={product.title}
+                    SalePrice={product.SalePrice}
+                    value={product.value}
+                    imageUrl={product.imageUrl}
+                  />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </div>
       </div>
     </>
   );
