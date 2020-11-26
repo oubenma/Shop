@@ -14,21 +14,7 @@ import { Checkbox, FormControlLabel, Paper, Table, TableBody, TableCell, TableCo
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { Url } from 'url';
-
-// function createData(name:img, calories: number, fat: number, carbs: number, protein: number) {
-//   return { name, calories, fat, carbs, protein };
-// }
-
-
-// const rows = [
-//   createData('https://picsum.photos/100/100', 6, 6.0, 24, 4.0),
-//   createData('https://picsum.photos/100/100', 237, 9.0, 37, 4.3),
-//   createData('https://picsum.photos/100/100', 262, 16.0, 24, 6.0),
-//   createData('https://picsum.photos/100/100', 305, 3.7, 67, 4.3),
-//   createData('https://picsum.photos/100/100', 356, 16.0, 49, 3.9),
-// ];
-
-
+import Footer from '../components/footer';
 
 const useStyles= makeStyles(()=>
 createStyles({
@@ -239,7 +225,6 @@ discoutButton: {
   borderRadius: '5px',
   padding: '0.6em 1.7em',
   fontSize: '0.8571428571em',
-  
   '&:hover': {
     backgroundColor: '#5600e3',
     opacity: 0.6,
@@ -481,6 +466,7 @@ const [state, setState] = React.useState({
        
        </div>
        </div>
+       <Footer/>
        </>
     );
 };

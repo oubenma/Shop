@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Paper } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -13,6 +13,10 @@ import PinterestIcon from "@material-ui/icons/Pinterest";
 import Axios from 'axios';
 import { RouteComponentProps } from "react-router-dom"
 import NewArrivalsSection from "./NewArrivalsSection";
+import { setUncaughtExceptionCaptureCallback } from "process";
+import { CartContext } from '../context/cartContext';
+export {};
+
 
 
 
@@ -218,10 +222,16 @@ const useStyles = makeStyles({
   },
 });
 
-// type TParams = { id: string };
-export default function SideDescription(props:any) {
+interface PrpopsType{
+  id:string;
+  xx:string;
+}
+export default function SideDescription(props:PrpopsType) {
+  // const id=props.id;
   const classes = useStyles();
   const [count, setCount] = useState(1);
+  
+ 
   const incrementProduct = () => {
     setCount(count + 1);
   };
@@ -232,7 +242,7 @@ export default function SideDescription(props:any) {
   const handleQuantity = (e: any) => {
     setCount(e.target.value);
   };
-  interface User{
+  interface Product{
     
     title:string;
     oldPrice:number;
@@ -240,28 +250,38 @@ export default function SideDescription(props:any) {
     quantity:number;
     value:number;
     description:string
-
+    imageUrl: string;
+    variations:string;
   };
-  const [productsData, setProductsData] = useState<User>({title: '',oldPrice:0,salePrice:0,quantity:0,value:0,description:''});
-
-   const id=props.match.params.id
+  
+const [productsData, setProductsData] = useState<Product>({title: '',oldPrice:0,salePrice:0,quantity:0,value:0,description:'',imageUrl:'',variations:''});
+// const[cart,setCart]=useState<User[]>([]);
+const {addToCart,cart} =useContext(CartContext);
+//  const addToCart=(productsData:User)=>{
+//   requestCart();};
+ 
+console.log({cart});
   useEffect(() => {
     getProducts();
-  }, []);
+  
+  }, [props.id]);
+  console.log('ma3rafxi 3lax makayt9raxi');
+    console.log(props.id);
   
   const getProducts = ()=>{
-    Axios.get(`http://localhost:1111/Products/${id}`
+    Axios.get(`http://localhost:1111/products/${props.id}`
     ).then(
       (response)=>{
       
       setProductsData( response.data);
       console.log(response.data)
-      console.log(props.match)
+
     }
     ).catch((error)=>{
       console.log(error);
     });
-  }; 
+  };
+   
   return (
     <div>
       <Paper className={classes.root}>
@@ -298,9 +318,9 @@ export default function SideDescription(props:any) {
             +
           </button>
         </div>
-        <button className={classes.button2}>
+        <button className={classes.button2} onClick={()=>addToCart(productsData)}>
           <ShoppingCartSharpIcon style={{ color: "#fff" }} />
-          <span style={{ verticalAlign: "top" }}> ADD TO CART</span>
+          <span style={{ verticalAlign: "top" }} > ADD TO CART</span>
         </button>
         <Typography
           className={classes.quantity}

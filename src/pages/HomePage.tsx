@@ -4,18 +4,18 @@ import NavBar from '../components/NavBar';
 import { DataContext } from '../context/dataContext';
 import TrendingRightNow from '../components/TrendingRightNow';
 import PopularThisWeek from '../components/PopularThisWeek';
+import Footer from '../components/footer';
 
 export default function Home() {
-  const { example, cuteFunction } = useContext(DataContext);
 
   return (
     <>
-      {/* {cuteFunction('dimanche')}
-      <p>{example}</p> */}
+      
       <NavBar />
       <PopularThisWeek />
       <NewArrivalsSection />
       <TrendingRightNow />
+      <Footer/>
     </>
   );
 }

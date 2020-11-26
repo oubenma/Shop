@@ -127,82 +127,82 @@ function NavBar() {
   const [cartItmes, setCartItmes] = useState<CartItemType[]>([]);
   const emptyCart = false;
 
-  useEffect(() => {
-    setCartItmes([
-      {
-        title: 'Hamilton Beach Flexbrew',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 19.22,
-        quntity: 2,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 18,
-        quntity: 4,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 18,
-        quntity: 4,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-    ]);
-  }, []);
+  // useEffect(() => {
+  //   setCartItmes([
+  //     {
+  //       title: 'Hamilton Beach Flexbrew',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 19.22,
+  //       quntity: 2,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 18,
+  //       quntity: 4,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 18,
+  //       quntity: 4,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //   ]);
+  // }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -278,7 +278,7 @@ function NavBar() {
         open={open}
         emptyCart={emptyCart}
         handleDrawerClose={handleDrawerClose}
-        cartItmes={cartItmes}
+        
       />
     </>
   );

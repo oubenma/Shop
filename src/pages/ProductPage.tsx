@@ -12,7 +12,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import { RouteComponentProps } from "react-router-dom"
 import { getThemeProps } from "@material-ui/styles";
 import { isConstTypeReference } from "typescript";
-
+import Footer from "../components/footer";
 const useStyles = makeStyles(() =>
   createStyles({
     container: {
@@ -85,13 +85,15 @@ const useStyles = makeStyles(() =>
   })
 );
 
-function Product() {
-  // 
-
+function Product( props:any) {
   const classes = useStyles();
   const [id, setId] = useState<string>('');
+  const [xx, setxx] = useState<string>('helooo from the other side');
+
   useEffect(() => {
-    console.log("rani khdmt");
+    setId(props.match.params.id);
+    console.log('hada howa id ');
+    console.log(props.match.params.id);
   }, []);
   // const [open, setOpen] = React.useState(false);
 
@@ -150,7 +152,7 @@ function Product() {
             </Grid>
             <Grid item xs={12} sm={12} md={4}>
               {/* description of the produdct here */}
-              <SideDescription id={id} />
+              <SideDescription id={id} xx={xx} />
               {/*end  description of the produdct here */}
              </Grid>
           </Grid>
@@ -207,6 +209,7 @@ function Product() {
           
         </div> 
       </div>
+      <Footer/>
     </>
   );
 }

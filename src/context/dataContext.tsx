@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-import PopularThisWeek from '../components/PopularThisWeek';
 
 type Product = {
   title: string;
@@ -10,15 +9,13 @@ type Product = {
 };
 
 interface ContextOptions {
-  example: string;
-  cuteFunction: (name: string) => void;
+
   popularThisWeekProducts: Product[];
   requestPopularThisWeekProducts: () => void;
 }
 
 export const DataContext = createContext<ContextOptions>({
-  example: '',
-  cuteFunction: (name: string) => {},
+
   popularThisWeekProducts: [],
   requestPopularThisWeekProducts: () => {},
 });
@@ -88,18 +85,13 @@ export const ApplicationProvider = (props: any) => {
   }, []);
 
   // TODO: remove cuteFunction and example
-  const cuteFunction = (name: string) => {
-    alert(name);
-  };
-  const example = 'hello from the other side';
+ 
+  
 
   const values = {
-    example,
-    cuteFunction,
     popularThisWeekProducts,
     requestPopularThisWeekProducts,
   };
-
   return (
     <DataContext.Provider value={values}>{props.children}</DataContext.Provider>
   );

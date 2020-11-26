@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-
+import React, { useContext, useState } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import LockIcon from '@material-ui/icons/Lock';
+import { CartContext } from '../context/cartContext';
 
 import {
   Drawer,
@@ -289,15 +289,17 @@ interface PropsType {
   open: boolean;
   handleDrawerClose: () => void;
   emptyCart: boolean;
-  cartItmes: CartItemType[];
+  // cartItmes: CartItemType[];
 }
 function CartDrawer({
   open,
   handleDrawerClose,
   emptyCart,
-  cartItmes,
+  // cartItmes,
 }: PropsType) {
   const classes = useStyles();
+  const { cart} = useContext(CartContext);
+
   const [count, setCount] = useState(1);
   const incrementProduct = () => {
     setCount(count + 1);
@@ -306,6 +308,7 @@ function CartDrawer({
     if (count < 1) return;
     setCount(count - 1);
   };
+ 
   return (
     <div className={classes.drawer_header}>
       <Drawer anchor='right' open={open} onClose={handleDrawerClose}>
@@ -339,23 +342,23 @@ function CartDrawer({
         ) : (
           <div className={classes.inner_container21}>
             <div className={classes.inner_container22}>
-              {cartItmes.map((item) => {
+              {cart.map((product) => {
                 return (
                   <>
                     <div className={classes.inner_container23}>
                       <CardMedia
                         className={classes.cover}
-                        image={item.imageUrl}
+                        image={product.imageUrl}
                       />
                       <CardContent className={classes.details}>
                         <div className={classes.hover}>
                           <Link href='#' className={classes.link}>
                             {' '}
-                            {item.title}
+                            {product.title}
                           </Link>
                         </div>
                         <Typography variant='subtitle1' color='textSecondary'>
-                          {item.variations}
+                          {/* {product.variations} */}
                         </Typography>
 
                         <div className={classes.product}>

@@ -1,10 +1,11 @@
-import React,{ useEffect, useState } from "react";
+import React,{ useContext, useEffect, useState } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { coffeMakerList } from "./constants";
 import ProductCard from "./ProductCard";
 import Axios from 'axios';
 import Link from "react-router-dom";
+import { CartContext } from "../context/cartContext";
 
 const useStyles = makeStyles({
   root: {
@@ -63,7 +64,7 @@ const useStyles = makeStyles({
 
 export default function NewArrivalsSection() {
   const classes = useStyles();
- 
+
    interface Product{
     
     id:number;
@@ -88,6 +89,7 @@ export default function NewArrivalsSection() {
       (response)=>{
      
       setProductsData( response.data);
+      console.log(response.data);
     }
     ).catch((error)=>{
       console.log(error);
@@ -111,7 +113,6 @@ export default function NewArrivalsSection() {
           );
         })}
       </Grid>
-
       <div className={classes.boxButton}>
         <Button className={classes.button}>View all</Button>
       </div>

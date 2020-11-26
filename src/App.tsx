@@ -2,6 +2,7 @@ import React ,{  useState }from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
+import CartPage from './pages/CartPage';
 import { ApplicationProvider } from './context/dataContext';
 import CheckoutPage from './pages/CheckoutPage';
 interface User{
@@ -21,15 +22,16 @@ const App = () => {
     <Router>
       <ApplicationProvider>
         <Switch>
-          <Route exact path={'/product/:id'}>
-            <ProductPage  />
+          <Route exact path={'/Product/:id'} component={ProductPage}>
           </Route>
           <Route exact path={'/checkout'}>
             <CheckoutPage />
           </Route>
-
           <Route exact path={'/'}>
             <HomePage />
+          </Route>
+          <Route exact path={'/cart'}>
+            <CartPage />
           </Route>
         </Switch>
       </ApplicationProvider>
