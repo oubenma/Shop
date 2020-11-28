@@ -6,30 +6,40 @@ interface Product{
   title:string;
     oldPrice:number;
     salePrice:number;
-    quantity:number;
     value:number;
     description:string
     imageUrl: string;
     variations:string;
   };
-
 interface ContextOptions {
   // products: Product[];
   cart:Product[];
-  // setCart: (product:Product) => void;  
-  addToCart: (product:Product) => void;
-  // requestProducts: () => void;  
+  quantity: number;
+  addToCart: (product:Product,quantity:number) => void;
+  incrementQuantity:()=>void;
+  decrementQuqntity:()=>void;
+  handleQuantity:(event:any)=>void;
+  removeFromCart:(prd:Product)=>void,
+
 }
 export const CartContext = createContext<ContextOptions>({
   cart:[],
+  quantity:1,
+  incrementQuantity:()=>{},
+  decrementQuqntity:()=>{},
+  handleQuantity:(event:any)=>{},
+  removeFromCart:(prd:Product)=>{},
   // setCart: (product:Product) => {}, 
   // products:[],
   // requestProducts: () => {},
-  addToCart: () => {},
+
+ 
+  addToCart: (product:Product,quantity:number) => {},
 });
 export const ApplicationProvider = (props: any) => {
   // const [products, setProducts] = useState<Product []>([]);
   const [cart, setCart] = useState<Product[]>([]);
+  const [quantity,setQuantity]=useState<number>(1);
   // const requestProducts = ()=>{
     // Axios.get(`http://localhost:1111/products/p`
     // ).then(
@@ -54,20 +64,47 @@ export const ApplicationProvider = (props: any) => {
   //   });
   //  };
 
- const addToCart = (product:Product) => {
- const newCard:Product[]=[...cart,product]
-    setCart(newCard); };
-  // useEffect(() => {
-  //   requestProducts(); 
+
+  //Add product to cart
+ const addToCart = (product:Product,quantity:number) => {
+ const newCart:Product[]=[...cart,{...product}]
+    setCart(newCart);
+   setQuantity(quantity); };
+
+   //increment qunqtity of product
+   const incrementQuantity = () => {
+    setQuantity(quantity +1 );
+  };
+   //decrement qunqtity of product
+  const decrementQuqntity = () => {
+    if (quantity < 1) return;
+    setQuantity(quantity - 1);
+  };
+  const handleQuantity = (e: any) => {
+    setQuantity(e.target.value);
+  };
+  
+  const removeFromCart=(productToRemove:Product) =>{
+   setCart(cart.filter((item)=> item!=productToRemove));
+  };
+    
+  useEffect(() => {
+  
      
-  // }, []);
+  }, []);
   const values = {
-  //   products,
+    //  products,
   //   requestProducts,
+  quantity,
+  incrementQuantity,
+  decrementQuqntity,
+  handleQuantity,
     cart,
      addToCart,
+     removeFromCart,
+    
   };
   return (
-    <CartContext.Provider value={values}>{props.children}</CartContext.Provider>
+    <CartContext.Provider value={values }>{props.children}</CartContext.Provider>
   );
   }

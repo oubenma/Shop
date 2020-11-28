@@ -229,21 +229,7 @@ interface PrpopsType{
 export default function SideDescription(props:PrpopsType) {
   // const id=props.id;
   const classes = useStyles();
-  const [count, setCount] = useState(1);
-  
- 
-  const incrementProduct = () => {
-    setCount(count + 1);
-  };
-  const decrementProduct = () => {
-    if (count < 1) return;
-    setCount(count - 1);
-  };
-  const handleQuantity = (e: any) => {
-    setCount(e.target.value);
-  };
   interface Product{
-    
     title:string;
     oldPrice:number;
     salePrice:number;
@@ -252,17 +238,16 @@ export default function SideDescription(props:PrpopsType) {
     description:string
     imageUrl: string;
     variations:string;
-  };
-  
+  }; 
 const [productsData, setProductsData] = useState<Product>({title: '',oldPrice:0,salePrice:0,quantity:0,value:0,description:'',imageUrl:'',variations:''});
-// const[cart,setCart]=useState<User[]>([]);
-const {addToCart,cart} =useContext(CartContext);
-//  const addToCart=(productsData:User)=>{
-//   requestCart();};
+const {addToCart,cart,handleQuantity,incrementQuantity,decrementQuqntity,quantity} =useContext(CartContext);
+
+  
  
-console.log({cart});
+console.log(cart);
   useEffect(() => {
     getProducts();
+    addToCart(productsData,quantity);
   
   }, [props.id]);
   console.log('ma3rafxi 3lax makayt9raxi');
@@ -281,11 +266,13 @@ console.log({cart});
       console.log(error);
     });
   };
+  console.log(productsData);
+  
    
   return (
     <div>
       <Paper className={classes.root}>
-  <Typography className={classes.title}><h6 >{productsData.title}</h6></Typography>
+  <Typography className={classes.title}><h6 >{productsData.title} </h6></Typography>
         <Typography>
           <Rating
             className={classes.star}
@@ -305,20 +292,20 @@ console.log({cart});
           Quantity
         </Typography>
         <div className={classes.quantityCase}>
-          <button className={classes.button1} onClick={decrementProduct}>
+          <button className={classes.button1} onClick={decrementQuqntity}>
             −
           </button>
           <input
             className={classes.input}
             type="number"
-            value={count}
+            value={quantity}
             onChange={handleQuantity}
           />
-          <button onClick={incrementProduct} className={classes.button1}>
+          <button onClick={incrementQuantity} className={classes.button1}>
             +
           </button>
         </div>
-        <button className={classes.button2} onClick={()=>addToCart(productsData)}>
+        <button className={classes.button2} onClick={()=>addToCart(productsData,quantity)}>
           <ShoppingCartSharpIcon style={{ color: "#fff" }} />
           <span style={{ verticalAlign: "top" }} > ADD TO CART</span>
         </button>

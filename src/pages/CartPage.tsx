@@ -1,10 +1,7 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { createStyles, Grid, makeStyles } from '@material-ui/core';
 import logo from'../assets/logo.png';
-
-
- 
-
+import { CartContext } from '../context/cartContext';
 
 const useStyles= makeStyles(()=>
  createStyles({
@@ -37,15 +34,14 @@ const useStyles= makeStyles(()=>
        borderCollapse:'collapse',
        
        },
-       
-
- }
-
- )
-
+ })
 );
 function Cart(){
     const classes= useStyles();
+    const{cart,quantity,decrementQuqntity,incrementQuantity,handleQuantity,removeFromCart}=useContext(CartContext);
+  console.log(cart);
+  
+
     return(
      <div className={classes.root}>
      <div className={classes.logodiv}>
@@ -57,10 +53,23 @@ function Cart(){
      <Grid item xs={12} sm={8} md={8}>
    <h3 >My Cart</h3>
     <div  style={{borderTop:'1px solid #d9d9d9'}}>
+    {cart.map((product) => {
+                return (
 <table className={classes.table}>
 <thead className={classes.header}><tr   className={classes.table}><th style={{padding:'10px'}}  >item</th>
  <th >price</th>
- <th>qty</th>
+ <th>    <button  onClick={decrementQuqntity}>
+            −
+          </button>
+          <input
+           
+            type="number"
+            value={quantity}
+            onChange={handleQuantity}
+          />
+          <button onClick={incrementQuantity}>
+            +
+          </button></th>
  <th>total</th>
  </tr> 
 </thead>
@@ -68,34 +77,20 @@ function Cart(){
  <tr  style={{fontSize: '14px', textTransform: 'capitalize',color:'#999',}} className={classes.table}>
  <td style={{padding:'10px',position:'relative'}} >
         <div style={{display:'inline-block'}}>
- <img style={{display:'inline-block'}}  src='https://picsum.photos/120/150' alt='logo' /></div>
+ <img style={{display:'inline-block'}}  src={product.imageUrl} alt='logo' width='150'height='150' /></div>
  <div style={{display:'inline-block',position:'absolute',top:0,marginLeft:'10px'}} >
- <p  >title of product</p>
- <p style={{fontSize: '12px'}}>variations of product</p> 
- <button style={{ position:'absolute',bottom:-90}}>remove</button>       
+ <p  >{product.title}</p>
+ <p style={{fontSize: '12px'}}>{product.variations}</p> 
+ <button style={{ position:'absolute',bottom:-90}} onClick={()=>removeFromCart}>remove</button>       
 </div>
  </td>
- <td>hjhjhk</td>       
- <td>hjhjhk</td>       
+ <td>{product.salePrice}</td>       
+ <td>{quantity}</td>       
  <td>hjhjhk</td>              
 </tr>   
-<tr   className={classes.table}>
- <td style={{padding:'10px'}} >
-        <div style={{display:'inline-block'}}>
-<img src='https://picsum.photos/120/150' alt='logo'  /></div>
-<div   style={{display:'inline-block'}}>
- <p>title of product</p>
- <p>variations of product</p> 
- <button>remove</button>       
-</div>
- </td>
- <td>hjhjhk</td>       
- <td>hjhjhk</td>       
- <td>hjhjhk</td>              
-</tr>    
-
 </table>  
-</div>
+      );})}
+      </div>
  </Grid><Grid item xs={12} sm={4} md={4}></Grid>
 
      </Grid>

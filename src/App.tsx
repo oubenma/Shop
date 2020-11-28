@@ -16,13 +16,13 @@ interface User{
 
 };
 
-
 const App = () => {
   return (
     <Router>
       <ApplicationProvider>
         <Switch>
           <Route exact path={'/Product/:id'} component={ProductPage}>
+  
           </Route>
           <Route exact path={'/checkout'}>
             <CheckoutPage />
