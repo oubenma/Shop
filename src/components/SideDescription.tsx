@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, { useContext, useEffect, useState } from "react";
 import { Paper } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -9,6 +10,15 @@ import Link from "@material-ui/core/Link";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import PinterestIcon from "@material-ui/icons/Pinterest";
+import Axios from 'axios';
+import { RouteComponentProps } from "react-router-dom"
+import NewArrivalsSection from "./NewArrivalsSection";
+import { setUncaughtExceptionCaptureCallback } from "process";
+import { CartContext } from '../context/cartContext';
+export {};
+
+
+
 
 const useStyles = makeStyles({
   root: {
@@ -212,71 +222,99 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SideDescription() {
+interface PrpopsType{
+  id:string;
+  xx:string;
+}
+export default function SideDescription(props:PrpopsType) {
+  // const id=props.id;
   const classes = useStyles();
-  const [count, setCount] = useState(1);
-  const incrementProduct = () => {
-    setCount(count + 1);
-  };
-  const decrementProduct = () => {
-    if (count < 1) return;
-    setCount(count - 1);
-  };
-  const handleQuantity = (e: any) => {
-    setCount(e.target.value);
-  };
+  interface Product{
+    title:string;
+    oldPrice:number;
+    salePrice:number;
+    quantity:number;
+    value:number;
+    description:string
+    imageUrl: string;
+    variations:string;
+  }; 
+const [productsData, setProductsData] = useState<Product>({title: '',oldPrice:0,salePrice:0,quantity:0,value:0,description:'',imageUrl:'',variations:''});
+const {addToCart,cart,handleQuantity,incrementQuantity,decrementQuqntity,quantity} =useContext(CartContext);
 
+  
+ 
+console.log(cart);
+  useEffect(() => {
+    getProducts();
+    addToCart(productsData,quantity);
+  
+  }, [props.id]);
+  console.log('ma3rafxi 3lax makayt9raxi');
+    console.log(props.id);
+  
+  const getProducts = ()=>{
+    Axios.get(`http://localhost:1111/products/${props.id}`
+    ).then(
+      (response)=>{
+      
+      setProductsData( response.data);
+      console.log(response.data)
+
+    }
+    ).catch((error)=>{
+      console.log(error);
+    });
+  };
+  console.log(productsData);
+  
+   
   return (
     <div>
       <Paper className={classes.root}>
-        <Typography className={classes.title}>Foot Restoring Gel:</Typography>
+  <Typography className={classes.title}><h6 >{productsData.title} </h6></Typography>
         <Typography>
           <Rating
             className={classes.star}
             name="read-only"
-            value={4}
+            value={productsData.value}
             readOnly
             size="small"
           />
           <span className={classes.spanTitle1}>(8)</span>
         </Typography>
         <Typography className={classes.price}>
-          <span style={{ textDecoration: "line-through" }}> ${3.99}</span>
+          <span style={{ textDecoration: "line-through" }}> {productsData.oldPrice}</span>
           &nbsp;
-          <span style={{ color: "#5600e3" }}>${2.99}</span>
+          <span style={{ color: "#5600e3" }}>{productsData.salePrice}</span>
         </Typography>
         <Typography className={classes.quantity} style={{ cursor: "pointer" }}>
           Quantity
         </Typography>
         <div className={classes.quantityCase}>
-          <button className={classes.button1} onClick={decrementProduct}>
+          <button className={classes.button1} onClick={decrementQuqntity}>
             −
           </button>
           <input
             className={classes.input}
             type="number"
-            value={count}
+            value={quantity}
             onChange={handleQuantity}
           />
-          <button onClick={incrementProduct} className={classes.button1}>
+          <button onClick={incrementQuantity} className={classes.button1}>
             +
           </button>
         </div>
-        <button className={classes.button2}>
+        <button className={classes.button2} onClick={(()=>addToCart(productsData,quantity))}>
+        {/* <button className={classes.button2} onClick={(()=>console.log('khdem stp'))}> */}
           <ShoppingCartSharpIcon style={{ color: "#fff" }} />
-          <span style={{ verticalAlign: "top" }}> ADD TO CART</span>
+          <span style={{ verticalAlign: "top" }} > ADD TO CART</span>
         </button>
         <Typography
           className={classes.quantity}
           style={{ fontSize: "19px", marginBottom: "17px" }}
         >
-          Le Lorem Ipsum est simplement du faux texte employé dans la
-          composition et la mise en page avant impression. Le Lorem Ipsum est le
-          faux texte standard de l'imprimerie depuis les années 1500, quand un
-          imprimeur anonyme assembla ensemble des morceaux de texte pour
-          réaliser un livre spécimen de polices de texte. Il n'a pas fait que
-          survivre cinq siècles, mais s'est aussi adapté à la bureautique
-          informatique, sans que son contenu n'en soit modifié
+          {productsData.description}
         </Typography>
         <Typography>
           <strong>

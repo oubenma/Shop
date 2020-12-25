@@ -9,7 +9,10 @@ import { coffeMakerList } from "../components/constants";
 import ReviewsSection from "../components/ReviewsSection";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-
+import { RouteComponentProps } from "react-router-dom"
+import { getThemeProps } from "@material-ui/styles";
+import { isConstTypeReference } from "typescript";
+import Footer from "../components/footer";
 const useStyles = makeStyles(() =>
   createStyles({
     container: {
@@ -81,11 +84,16 @@ const useStyles = makeStyles(() =>
     },
   })
 );
-function Product() {
+
+function Product( props:any) {
   const classes = useStyles();
-  const [hajar, setHajar] = useState(0);
+  const [id, setId] = useState<string>('');
+  const [xx, setxx] = useState<string>('helooo from the other side');
+
   useEffect(() => {
-    console.log("rani khdmt");
+    setId(props.match.params.id);
+    console.log('hada howa id ');
+    console.log(props.match.params.id);
   }, []);
   // const [open, setOpen] = React.useState(false);
 
@@ -123,12 +131,13 @@ function Product() {
       thumbnail: "https://picsum.photos/id/1019/250/150/",
     },
   ];
+  
   return (
     <>
-      <NavBar />
+  <NavBar />
 
       <div className={classes.root}>
-        <div className={classes.container}>
+       <div className={classes.container}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={6}>
               {/* image galery */}
@@ -143,11 +152,11 @@ function Product() {
             </Grid>
             <Grid item xs={12} sm={12} md={4}>
               {/* description of the produdct here */}
-              <SideDescription />
+              <SideDescription id={id} xx={xx} />
               {/*end  description of the produdct here */}
-            </Grid>
+             </Grid>
           </Grid>
-        </div>
+        </div> 
         <div className={classes.container2}>
           <div>partie dyal frequently bought together</div>
           <Grid container spacing={3}>
@@ -157,6 +166,7 @@ function Product() {
             <Grid item xs={12} sm={12} md={6}>
               <Paper className={classes.paper4}>PRICE of the product</Paper>
             </Grid>
+            
           </Grid>
         </div>
         {/* reviews section here */}
@@ -178,27 +188,28 @@ function Product() {
               <Paper className={classes.paper5}> third haja</Paper>
             </Grid>
           </Grid>
-        </div>
-        {/* dont forget alingItem ens justify resize images  and the eight of review section*/}
+        </div> 
         <div className={classes.container5}>
           <div>partie dyal similar products</div>
           <Grid container spacing={3}>
-            {coffeMakerList.map((product) => {
-              return (
-                <Grid item xs={12} sm={6} md={3}>
-                  <ProductCard
-                    OldPrice={product.OldPrice}
-                    title={product.title}
-                    SalePrice={product.SalePrice}
-                    value={product.value}
-                    imageUrl={product.imageUrl}
-                  />
-                </Grid>
-              );
-            })}
-          </Grid>
-        </div>
+        {coffeMakerList.map((product) => {
+          return (
+            <Grid item xs={12} sm={6} md={3}>
+              <ProductCard
+                OldPrice={product.OldPrice}
+                title={product.title}
+                SalePrice={product.SalePrice}
+                value={product.value}
+                imageUrl={product.imageUrl}
+              />
+            </Grid> 
+          );
+        })}
+      </Grid>
+          
+        </div> 
       </div>
+      <Footer/>
     </>
   );
 }

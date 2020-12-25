@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,6 +10,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import logo from '../assets/logo.png';
 import CartDrawer from './CartDrawer';
 import { CartItemType } from '../types/types';
+import { CartContext } from '../context/cartContext';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -102,14 +103,12 @@ const useStyles = makeStyles(() =>
       lineHeight: '1.2',
       marginButtom: '0px',
     },
-
     flex1: {
       flexGrow: 1,
     },
     flex2: {
       flexGrow: 3,
     },
-
     boxButton: {
       justifyContent: 'center',
       alignItems: 'center',
@@ -127,82 +126,82 @@ function NavBar() {
   const [cartItmes, setCartItmes] = useState<CartItemType[]>([]);
   const emptyCart = false;
 
-  useEffect(() => {
-    setCartItmes([
-      {
-        title: 'Hamilton Beach Flexbrew',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 19.22,
-        quntity: 2,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 18,
-        quntity: 4,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 18,
-        quntity: 4,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-      {
-        title: 'Lorem ipsum dolor sit amet.',
-        imageUrl: 'https://picsum.photos/200/200',
-        productPrice: 133,
-        quntity: 5,
-      },
-    ]);
-  }, []);
+  // useEffect(() => {
+  //   setCartItmes([
+  //     {
+  //       title: 'Hamilton Beach Flexbrew',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 19.22,
+  //       quntity: 2,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 18,
+  //       quntity: 4,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 18,
+  //       quntity: 4,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //     {
+  //       title: 'Lorem ipsum dolor sit amet.',
+  //       imageUrl: 'https://picsum.photos/200/200',
+  //       productPrice: 133,
+  //       quntity: 5,
+  //     },
+  //   ]);
+  // }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -211,6 +210,9 @@ function NavBar() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const {cart}=useContext(CartContext);
+  
+console.log('xhal mn item :'+cart.length);
 
   return (
     <>
@@ -265,7 +267,7 @@ function NavBar() {
                   color='inherit'
                   onClick={handleDrawerOpen}
                 >
-                  <Badge badgeContent={2} color='secondary'>
+                  <Badge badgeContent={cart.length} color='secondary'>
                     <ShoppingCartIcon />
                   </Badge>
                 </IconButton>
@@ -278,7 +280,8 @@ function NavBar() {
         open={open}
         emptyCart={emptyCart}
         handleDrawerClose={handleDrawerClose}
-        cartItmes={cartItmes}
+       
+        
       />
     </>
   );

@@ -1,8 +1,11 @@
-import React from "react";
+import React,{ useContext, useEffect, useState } from "react";
 import { Grid, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { coffeMakerList } from "./constants";
 import ProductCard from "./ProductCard";
+import Axios from 'axios';
+import Link from "react-router-dom";
+import { CartContext } from "../context/cartContext";
 
 const useStyles = makeStyles({
   root: {
@@ -58,27 +61,58 @@ const useStyles = makeStyles({
   },
 });
 
+
 export default function NewArrivalsSection() {
   const classes = useStyles();
+
+   interface Product{
+    
+    id:number;
+    title:string;
+    oldPrice:number;
+    salePrice:number;
+    quantity:number;
+    value:number;
+    description:string;
+    imageUrl:string
+  
+  };
+  const [products, setProducts] = useState<Product[]>([]);
+
+  
+  useEffect(() => {
+    getProducts();
+  }, []);
+  const getProducts = ()=>{
+    Axios.get(`http://localhost:1111/products/p`
+    ).then(
+      (response)=>{
+     
+      setProducts( response.data);
+      console.log(response.data);
+    }
+    ).catch((error)=>{
+      console.log(error);
+    });
+  };
   return (
     <div className={classes.root}>
       <h2 className={classes.title}>New Arrivals</h2>
       <Grid container spacing={3}>
-        {coffeMakerList.map((product) => {
+        {products.map((product) => {
           return (
-            <Grid item xs={12} sm={6} md={3}>
-              <ProductCard
-                OldPrice={product.OldPrice}
+            <Grid item xs={12} sm={6} md={3}>  
+           <a href={`/product/${product.id}`}><ProductCard
+                OldPrice={product.oldPrice}
                 title={product.title}
-                SalePrice={product.SalePrice}
+                SalePrice={product.salePrice}
                 value={product.value}
-                imageUrl={product.imageUrl}
-              />
+               imageUrl={product.imageUrl}
+              /> </a>
             </Grid>
           );
         })}
       </Grid>
-
       <div className={classes.boxButton}>
         <Button className={classes.button}>View all</Button>
       </div>

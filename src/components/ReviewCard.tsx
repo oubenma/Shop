@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles({
   root: {
    backgroundColor:'#e6e6e6',
-    maxWidth: '250vw',
+    
     cursor: ' pointer',
     boxShadow: 'none', 
   },
