@@ -211,7 +211,8 @@ function NavBar() {
     setOpen(false);
   };
   const {cart}=useContext(CartContext);
-
+  
+console.log('xhal mn item :'+cart.length);
 
   return (
     <>

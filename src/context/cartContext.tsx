@@ -36,7 +36,7 @@ export const CartContext = createContext<ContextOptions>({
  
   addToCart: (product:Product,quantity:number) => {},
 });
-export const ApplicationProvider = (props: any) => {
+export const ApplicationProviderCart = (props: any) => {
   // const [products, setProducts] = useState<Product []>([]);
   const [cart, setCart] = useState<Product[]>([]);
   const [quantity,setQuantity]=useState<number>(1);
@@ -69,7 +69,9 @@ export const ApplicationProvider = (props: any) => {
  const addToCart = (product:Product,quantity:number) => {
  const newCart:Product[]=[...cart,{...product}]
     setCart(newCart);
-   setQuantity(quantity); };
+   setQuantity(quantity);
+   console.log('tester if cqrt is full');
+   console.log(cart);};
 
    //increment qunqtity of product
    const incrementQuantity = () => {

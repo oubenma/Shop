@@ -56,14 +56,13 @@ function Cart(){
     {cart.map((product) => {
                 return (
 <table className={classes.table}>
-<thead className={classes.header}><tr   className={classes.table}><th style={{padding:'10px'}}  >item</th>
+<thead className={classes.header}><tr className={classes.table}><th style={{padding:'10px'}}  >item</th>
  <th >price</th>
  <th>    <button  onClick={decrementQuqntity}>
             −
           </button>
           <input
-           
-            type="number"
+          type="number"
             value={quantity}
             onChange={handleQuantity}
           />

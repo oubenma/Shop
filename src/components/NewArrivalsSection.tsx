@@ -77,7 +77,7 @@ export default function NewArrivalsSection() {
     imageUrl:string
   
   };
-  const [productsData, setProductsData] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function NewArrivalsSection() {
     ).then(
       (response)=>{
      
-      setProductsData( response.data);
+      setProducts( response.data);
       console.log(response.data);
     }
     ).catch((error)=>{
@@ -99,7 +99,7 @@ export default function NewArrivalsSection() {
     <div className={classes.root}>
       <h2 className={classes.title}>New Arrivals</h2>
       <Grid container spacing={3}>
-        {productsData.map((product) => {
+        {products.map((product) => {
           return (
             <Grid item xs={12} sm={6} md={3}>  
            <a href={`/product/${product.id}`}><ProductCard

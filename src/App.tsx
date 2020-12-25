@@ -5,6 +5,8 @@ import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import { ApplicationProvider } from './context/dataContext';
 import CheckoutPage from './pages/CheckoutPage';
+import ContactPage from './pages/ContactPage'
+import { ApplicationProviderCart } from './context/cartContext';
 interface User{
   id:string;
   title:string;
@@ -20,6 +22,7 @@ const App = () => {
   return (
     <Router>
       <ApplicationProvider>
+      <ApplicationProviderCart>
         <Switch>
           <Route exact path={'/Product/:id'} component={ProductPage}>
   
@@ -33,7 +36,11 @@ const App = () => {
           <Route exact path={'/cart'}>
             <CartPage />
           </Route>
+          <Route exact path={'/contact'}>
+            <ContactPage/>
+          </Route>
         </Switch>
+        </ApplicationProviderCart>
       </ApplicationProvider>
     </Router>
   );

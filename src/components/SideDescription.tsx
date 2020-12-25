@@ -305,7 +305,8 @@ console.log(cart);
             +
           </button>
         </div>
-        <button className={classes.button2} onClick={()=>addToCart(productsData,quantity)}>
+        <button className={classes.button2} onClick={(()=>addToCart(productsData,quantity))}>
+        {/* <button className={classes.button2} onClick={(()=>console.log('khdem stp'))}> */}
           <ShoppingCartSharpIcon style={{ color: "#fff" }} />
           <span style={{ verticalAlign: "top" }} > ADD TO CART</span>
         </button>
